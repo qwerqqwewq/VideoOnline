@@ -7,4 +7,5 @@ package com.zte.video;
  */
 public class asd {
     asd asd;
+    int a=1;
 }
