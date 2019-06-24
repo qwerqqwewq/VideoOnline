@@ -6,4 +6,5 @@ package com.zte.video;
  * Description:<描述>
  */
 public class asd {
+    asd asd;
 }
