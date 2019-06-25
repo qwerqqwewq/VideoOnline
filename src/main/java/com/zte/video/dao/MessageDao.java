@@ -2,7 +2,7 @@ package com.zte.video.dao;
 
 import com.zte.video.entity.Message;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @Author:helloboy
@@ -15,7 +15,7 @@ public interface MessageDao {
      * 查询留言板的所有留言
      * @return
      */
-    public Set<Message> selectAll();
+    public List<Message> selectAll();
 
 
     /**
