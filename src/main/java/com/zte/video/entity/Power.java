@@ -33,6 +33,6 @@ public class Power implements Serializable{
         this.power=power;
     }
 
-    public Power() {
+    public Power(){
     }
 }
