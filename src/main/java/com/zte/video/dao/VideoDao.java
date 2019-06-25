@@ -5,8 +5,8 @@ import com.zte.video.entity.Video;
 import java.util.List;
 
 /**
- * Author:helloboy
- * Date:2019-06-25 11:56
+ * @Author:helloboy
+ * @Date:2019-06-25 11:56
  * Description:<描述>
  */
 public interface VideoDao {
