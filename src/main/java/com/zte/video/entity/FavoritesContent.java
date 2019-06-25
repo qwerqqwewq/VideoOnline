@@ -10,70 +10,63 @@ import java.io.Serializable;
 public class FavoritesContent implements Serializable {
 
     private Integer id;
-    private User user;
-    private Video video;
-    private String insertDate;
+
+    private Integer fid;
+
+    private Integer vid;
+
     private String remark;
 
-    public FavoritesContent(){}
-    public FavoritesContent(Integer id,User user,Video video,String insertDate,String remark){
-        this.id=id;
-        this.user=user;
-        this.video=video;
-        this.insertDate=insertDate;
-        this.remark=remark;
+    private String inserDate;
+
+    public Integer getFId() {
+        return fid;
     }
 
-
-    @Override
-    public String toString() {
-        return "FavoritesContent{" +
-                "id=" + id +
-                ", user=" + user +
-                ", video=" + video +
-                ", insertDate='" + insertDate + '\'' +
-                ", remark='" + remark + '\'' +
-                '}';
+    public void setFid(Integer fid) {
+        this.fid = fid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
+    public Integer getid() {
         return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setVid(Integer vid) {
+        this.vid = vid;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getVid() {
+        return vid;
     }
 
-    public void setVideo(Video video) {
-        this.video = video;
-    }
-
-    public Video getVideo() {
-        return video;
-    }
-
-    public void setInsertDate(String insertDate) {
-        this.insertDate = insertDate;
-    }
-
-    public String getInsertDate() {
-        return insertDate;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setId(Integer vid) {
+        this.vid = vid;
     }
 
     public String getRemark() {
         return remark;
     }
 
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getInserDate() {
+        return inserDate;
+    }
+
+    public void setInserDate(String inserDate) {
+        this.inserDate = inserDate;
+    }
+
+    public FavoritesContent() {
+    }
+
+    public FavoritesContent(Integer id, Integer vid, Integer fid, Integer uid, String remark, String inserDate) {
+        this.id = id;
+        this.remark = remark;
+        this.vid = vid;
+        this.fid = fid;
+        this.inserDate = inserDate;
+    }
 }

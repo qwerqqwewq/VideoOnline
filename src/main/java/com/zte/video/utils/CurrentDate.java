@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Author:helloboy
- * Date:2019-06-25 10:47
+ * @Author:helloboy
+ * @Date:2019-06-25 10:47
  * Description:<描述>
  */
 public class CurrentDate {

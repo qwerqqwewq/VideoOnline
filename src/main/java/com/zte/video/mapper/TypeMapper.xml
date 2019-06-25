@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.TypeDao">
+
+    <!-- /**
+     * 查找所有的影片类型
+     * @return
+     */
+    public List<Type> selectAll();-->
+    <select id="selectAll" parameterType="type">
+        select
+        id,
+        type
+        from
+        t_type
+    </select>
+
+    <!--/**
+     * 插入一个类型
+     * @param type
+     * @return
+     */
+     public int insertType(Type type);-->
+    <insert id="insertType" parameterType="type">
+        insert into
+        t_type(type)
+        VALUES
+        #{type};
+    </insert>
+
+    <!-- /**
+     * 更新一个类型
+     * @param type
+     * @return
+     */
+    public int updateType(Type type);-->
+    <update id="updateType" parameterType="type">
+        UPDATE
+        t_type
+        SET
+        type = #{type}
+        WHERE
+        id = #{id};
+    </update>
+
+    <!-- /**
+     * 删除一个类型
+     * @param id
+     * @return
+     */
+    public int deleteType(Integer id);-->
+    <delete id="deleteType">
+        DELETE FROM
+        t_type
+        WHERE
+        id=#{id};
+    </delete>
+
+</mapper>

@@ -21,12 +21,13 @@ public interface UserDao {
      * @param user
      * @return
      */
-    public void insertUser(User user);
+    public int insertUser(User user);
 
     /**
-     * 删除用户信息
+     * 更新用户信息
      * @param user
+     * @return
      */
-    public void updateUser(User user);
+    public int updateUser(User user);
 
 }

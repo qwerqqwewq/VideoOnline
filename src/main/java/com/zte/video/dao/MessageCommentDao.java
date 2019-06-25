@@ -3,7 +3,7 @@ package com.zte.video.dao;
 import com.zte.video.entity.Message;
 import com.zte.video.entity.MessageComment;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @Author:helloboy
@@ -23,7 +23,7 @@ public interface MessageCommentDao {
      * @param message
      * @return
      */
-    public Set<MessageComment> selectAllByID(Message message);
+    public List<MessageComment> selectAllByID(Message message);
 
     /**
      * 删除某条留言下的某个回复
