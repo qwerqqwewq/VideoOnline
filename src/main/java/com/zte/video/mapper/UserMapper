@@ -12,5 +12,5 @@
 
 
     </resultMap>
-    <select id="checkname" resultMap="com.zte.video.Vo.UserVo"></select>
+    <select id="checkname" resultMap="com.zte.video.vo.UserVo"></select>
 </mapper>
