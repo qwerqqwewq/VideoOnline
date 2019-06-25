@@ -3,13 +3,13 @@ package com.zte.video.dao;
 import com.zte.video.entity.User;
 
 /**
- * Author:helloboy
- * Date:2019-06-24 17:31
+ * @Author:helloboy
+ * @Date:2019-06-24 17:31
  * Description:<描述>
  */
 public interface UserDao {
     /**
-     * 查询t_user中是否有此用户名存在
+     * 根据用户姓名查询
      * @param  name
      * @return
      **/
@@ -21,12 +21,13 @@ public interface UserDao {
      * @param user
      * @return
      */
-    public void insertUser(User user);
+    public int insertUser(User user);
 
     /**
-     * 删除用户信息
+     * 更新用户信息
      * @param user
+     * @return
      */
-    public void updateUser(User user);
+    public int updateUser(User user);
 
 }

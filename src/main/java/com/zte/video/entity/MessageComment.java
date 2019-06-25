@@ -6,6 +6,38 @@ package com.zte.video.entity;
  * Description:<描述>
  */
 public class MessageComment {
+    private Integer id;
+
+    private String content;
+
+    private Message message;
+
+    private User user;
+
+    private String commentDate;
+
+    public MessageComment() {
+    }
+
+    public MessageComment(Integer id, Message message, String content, User user, String commentDate) {
+        this.id = id;
+        this.message = message;
+        this.content = content;
+        this.user = user;
+        this.commentDate = commentDate;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageComment{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", message=" + message +
+                ", user=" + user +
+                ", commentDate='" + commentDate + '\'' +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }
@@ -22,20 +54,20 @@ public class MessageComment {
         this.content = content;
     }
 
-    public Integer getMid() {
-        return mid;
+    public Message getMessage() {
+        return message;
     }
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
+    public void setMessage(Message message) {
+        this.message = message;
     }
 
-    public Integer getUid() {
-        return uid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getCommentDate() {
@@ -45,24 +77,4 @@ public class MessageComment {
     public void setCommentDate(String commentDate) {
         this.commentDate = commentDate;
     }
-
-    public MessageComment(){
-    }
-
-    public MessageComment(Integer id,String content,Integer mid,Integer uid,String commentDate){
-        this.id=id;
-        this.content=content;
-        this.mid=mid;
-        this.uid=uid;
-        this.commentDate=commentDate;
-    }
-
-    private Integer id;
-    private String content;
-    private Integer mid;
-    private Integer uid;
-    private String commentDate;
-
-
-
 }

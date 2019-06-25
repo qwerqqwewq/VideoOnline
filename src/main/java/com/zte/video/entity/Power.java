@@ -35,4 +35,12 @@ public class Power implements Serializable{
 
     public Power(){
     }
+
+    @Override
+    public String toString() {
+        return "Power{" +
+                "id=" + id +
+                ", power='" + power + '\'' +
+                '}';
+    }
 }

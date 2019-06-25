@@ -1,31 +1,38 @@
 package com.zte.video.dao;
 
+import com.zte.video.entity.Message;
 import com.zte.video.entity.MessageComment;
 
+import java.util.List;
+
 /**
- * Author:helloboy
- * Date:2019-06-24 17:31
+ * @Author:helloboy
+ * @Date:2019-06-24 17:31
  * Description:<描述>
  */
 public interface MessageCommentDao {
     /**
      * 添加对某个留言的回复
-     * @param mid
-     * @param uid
+     * @param message
      * @return
      */
-    public MessageComment insertMessageComment();
+    public MessageComment insertMessageCommentById(Message message);
 
     /**
      * 查询某个留言下的所有的回复
+     * @param message
+     * @return
      */
-    public void selectByID(Integer mid);
+    public List<MessageComment> selectAllByID(Message message);
 
     /**
-     * 删除此留言下的某个回复
+     * 删除某条留言下的某个回复
      * @param id
      * @return
      */
-    public MessageComment deleteMessageComment(Integer id);
-
+    public MessageComment deleteMessageCommentByID(Integer id);
+    /**
+     * 清空
+     */
+    public void deleteAllMessageComment();
 }

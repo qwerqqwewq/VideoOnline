@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.UserDao">
+    <resultMap id="ruser" type="user">
+        <id property="id" column="uid"/>
+        <result property="pwd" column="upwd"/>
+        <result property="name" column="uname"/>
+        <result property="registDate" column="uregistDate"/>
+        <association property="power" column="T_power" select="selectPowerByID"/>
+    </resultMap>
+    <select id="selectByName" resultMap="ruser">
+        SELECT
+        u.id uid,
+        u.pwd upwd,
+        u.name uname,
+        u.registDate uregistDate
+
+        p.power T_Power
+        FROM
+        t_user u
+        LEFT JOIN t_power p
+        ON p.id=u.powerID
+        WHERE u.name=#{name}
+
+
+    </select>
+
+
+
+    <select id="insertUser" resultType="user">
+        INSERT INTO
+        t_user
+        (pwd,name,registDate,powerID)
+        VALUES
+        (#{pwd},#{name},#{registDate},#{powerID})
+        WHERE
+        id=#{id}
+    </select>
+
+
+
+
+    <select id="updateUser" resultType="user">
+        UPDATE
+        t_user
+        SET
+        name=#{name}
+        pwd=#{pwd}
+        WHERE
+        id=#{id}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
