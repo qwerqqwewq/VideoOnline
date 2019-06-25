@@ -19,6 +19,8 @@ public class User implements Serializable{
 
     private Power power;
 
+
+
     public User() {
     }
 

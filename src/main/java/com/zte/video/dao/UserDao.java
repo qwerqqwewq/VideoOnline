@@ -3,8 +3,8 @@ package com.zte.video.dao;
 import com.zte.video.entity.User;
 
 /**
- * Author:helloboy
- * Date:2019-06-24 17:31
+ * @Author:helloboy
+ * @Date:2019-06-24 17:31
  * Description:<描述>
  */
 public interface UserDao {

@@ -8,9 +8,9 @@
         <result property="pwd" column="upwd"/>
         <result property="name" column="uname"/>
         <result property="registDate" column="uregistDate"/>
-        <association property="powerID"
+        <association property="power" column=""
 
 
     </resultMap>
-    <select id="checkname" resultMap="com.zte.video.vo.UserVo"></select>
+    <select id="selectByName" resultMap="com.zte.video.dao.UserDao"></select>
 </mapper>
