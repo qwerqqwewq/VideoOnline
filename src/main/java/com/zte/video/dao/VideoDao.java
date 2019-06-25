@@ -10,16 +10,31 @@ import java.util.List;
  * Description:<描述>
  */
 public interface VideoDao {
-    //选择所有视频
+    /**
+     * 选择所有视频
+     * @return
+     */
     public List<Video> selectAll();
 
-    //根据名称查找视频
+    /**
+     * 根据名称查找视频
+     * @param title
+     * @return
+     */
     public Video selectByTitle(String title);
 
-    //修改视频
+    /**
+     * 修改视频
+     * @param video
+     * @return
+     */
     public int updateVideo(Video video);
 
-    //插入视频
+    /**
+     * 插入视频
+     * @param video
+     * @return
+     */
     public int insertVideo(Video video);
 
 

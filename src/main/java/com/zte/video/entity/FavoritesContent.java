@@ -17,9 +17,17 @@ public class FavoritesContent implements Serializable {
 
     private String remark;
 
-    private String inserDate;
+    private String insertDate;
 
-    public Integer getFId() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getFid() {
         return fid;
     }
 
@@ -27,19 +35,11 @@ public class FavoritesContent implements Serializable {
         this.fid = fid;
     }
 
-    public Integer getid() {
-        return id;
-    }
-
-    public void setVid(Integer vid) {
-        this.vid = vid;
-    }
-
     public Integer getVid() {
         return vid;
     }
 
-    public void setId(Integer vid) {
+    public void setVid(Integer vid) {
         this.vid = vid;
     }
 
@@ -51,22 +51,33 @@ public class FavoritesContent implements Serializable {
         this.remark = remark;
     }
 
-    public String getInserDate() {
-        return inserDate;
+    public String getInsertDate() {
+        return insertDate;
     }
 
-    public void setInserDate(String inserDate) {
-        this.inserDate = inserDate;
+    public void setInsertDate(String insertDate) {
+        this.insertDate = insertDate;
     }
 
     public FavoritesContent() {
     }
 
-    public FavoritesContent(Integer id, Integer vid, Integer fid, Integer uid, String remark, String inserDate) {
+    public FavoritesContent(Integer id, Integer fid, Integer vid, String insertDate, String remark) {
         this.id = id;
-        this.remark = remark;
-        this.vid = vid;
         this.fid = fid;
-        this.inserDate = inserDate;
+        this.vid = vid;
+        this.insertDate = insertDate;
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "FavoritesContent{" +
+                "id=" + id +
+                ", fid=" + fid +
+                ", vid=" + vid +
+                ", remark='" + remark + '\'' +
+                ", insertDate='" + insertDate + '\'' +
+                '}';
     }
 }

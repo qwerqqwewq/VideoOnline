@@ -2,8 +2,8 @@ package com.zte.video.utils;
 import java.security.MessageDigest;
 
 /**
- * Author:helloboy
- * Date:2019-06-25 10:51
+ * @Author:helloboy
+ * @Date:2019-06-25 10:51
  * Description:<描述>
  */
 

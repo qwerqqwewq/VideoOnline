@@ -81,4 +81,15 @@ public class Favorites implements Serializable {
         this.user=user;
     }
 
+    @Override
+    public String toString() {
+        return "Favorites{" +
+                "id=" + id +
+                ", uid=" + uid +
+                ", name='" + name + '\'' +
+                ", remark='" + remark + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
