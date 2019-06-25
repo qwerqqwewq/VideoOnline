@@ -24,6 +24,13 @@ public interface VideoDao {
     public Video selectByTitle(String title);
 
     /**
+     * 根据id查找视频
+     * @param id
+     * @return
+     */
+    public Video selectById(Integer id);
+
+    /**
      * 修改视频
      * @param video
      * @return

@@ -3,6 +3,7 @@ package com.zte.video.service.impl;
 import com.zte.video.dao.VideoDao;
 import com.zte.video.entity.Video;
 import com.zte.video.service.VideoService;
+import com.zte.video.utils.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -42,12 +43,19 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public Video findById(Integer id) {
+        return videoDao.selectById(id);
+    }
+
+    @Override
     public int modifyVideo(Video video) {
         return videoDao.updateVideo(video);
     }
 
     @Override
     public int addVideo(Video video) {
+        video.setUploadDate(CurrentDate.getCurrentDate());
         return videoDao.insertVideo(video);
     }
 }

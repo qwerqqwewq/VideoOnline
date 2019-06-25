@@ -52,6 +52,35 @@
 
     </select>
 
+    <!-- /**
+     * 根据id查找视频
+     * @param id
+     * @return
+     */
+    public Video selectById(Integer id);-->
+    <select id="selectById" resultMap="rsm">
+        SELECT
+        b.id id,
+        b.title title,
+        b.picPath picPath,
+        b.videoPath videoPath,
+        b.typeId typeId,
+        (
+        select
+        c.type
+        from t_type c
+        where c.id = b.typeID
+        )as type,
+        b.videoTime videoTime,
+        b.intro intro,
+        b.uploadDate uploadDate
+
+        from t_video b
+        WHERE
+        b.id = #{id};
+
+    </select>
+
     <!-- //根据名称查找视频
     public Video selectByTitle(String title);-->
     <select id="selectByTitle" parameterType="video" resultMap="rsm">
@@ -95,7 +124,7 @@
         videoPath = #{videoPath},
         typeId = #{type.id},
         videoTime = #{videoTime},
-        intro = #{intro},
+        intro = #{intro}
         WHERE
         id = #{id}
     </update>

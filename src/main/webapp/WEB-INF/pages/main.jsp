@@ -4,6 +4,8 @@
     <title></title>
 </head>
 <body>
-<a href="/main"></a>
+hello world!
+<div><a href="${pageContext.request.contextPath}/video/page">视频页面</a>
+</div>
 </body>
 </html>
