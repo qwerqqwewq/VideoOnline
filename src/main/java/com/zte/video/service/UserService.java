@@ -9,13 +9,26 @@ import com.zte.video.entity.User;
  */
 public interface UserService {
     /**
-     * 判断用户名是否存在
+     * 根据用户名查询
      * @param name
      * @return
      */
     public User findByName(String name);
 
     /**
-     * 判断是否
+     * 插入一条用户数据（用于用户注册）
+     * @param user
+     * @return
      */
+    public int addUser(User user);
+
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    public int modifyUser(User user);
+
+
+
 }
