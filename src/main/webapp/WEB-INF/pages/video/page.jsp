@@ -2,20 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>视频页面</title>
 </head>
 <body>
-<form>
-    <div>标题</div><input name="title" /><br>
-    <div>封面路径</div><input name="picPath"><br>
-    <div>视频路径</div><input name="videoPath"><br>
-    <div>视频时长</div><input name="videoTime"><br>
-    <div>简介</div><input name="intro"><br>
-    <div>类型</div><br>
-    <c:forEach items="${types}" var="type">
-    <li><input name="typeId" type="radio" value=${type.id}>${type.type}</li>
-    </c:forEach>
-
-</form>
+<a href="${pageContext.request.contextPath}/video/insertVideo">插入视频</a><br>
+<a href="${pageContext.request.contextPath}/video/findVideo">查看所有视频</a><br>
+<a href="${pageContext.request.contextPath}/video/updateVideo">更新视频</a><br>
 </body>
 </html>

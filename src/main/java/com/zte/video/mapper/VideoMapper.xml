@@ -95,7 +95,7 @@
         videoPath = #{videoPath},
         typeId = #{type.id},
         videoTime = #{videoTime},
-        intro = #{intro},
+        intro = #{intro}
         WHERE
         id = #{id}
     </update>
