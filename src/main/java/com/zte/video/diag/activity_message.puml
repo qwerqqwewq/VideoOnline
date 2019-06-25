@@ -1,0 +1,11 @@
+@startuml
+(*)  --> "留言板"
+-->"用户留言"
+If "此留言下的评论是否超过3条" then
+--> [Yes] "显示前3条并添加显示所有案件"
+--> "run command"
+else
+--> "run command"
+Endif
+-->(*)
+@enduml

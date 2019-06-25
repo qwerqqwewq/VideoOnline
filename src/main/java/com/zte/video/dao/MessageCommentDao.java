@@ -14,18 +14,18 @@ public interface MessageCommentDao {
      * @param uid
      * @return
      */
-    MessageComment addMessageComment(Integer mid);
+    public MessageComment insertMessageComment();
 
     /**
      * 查询某个留言下的所有的回复
      */
-    void selectAll(Integer mid);
+    public void selectByID(Integer mid);
 
     /**
      * 删除此留言下的某个回复
      * @param id
      * @return
      */
-    MessageComment deleteMessageComment(Integer id);
+    public MessageComment deleteMessageComment(Integer id);
 
 }

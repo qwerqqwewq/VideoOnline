@@ -13,15 +13,15 @@ public interface MessageDao {
      * 查询留言板的所有留言
      * @return
      */
-    Message selectAll(Integer id);
+    public Message selectByID();
 
     /**
      * 添加评论
      */
-    void addMessage();
+    public void insertMessage();
 
     /**
      * 删除评论
      */
-    void deleteMessage();
+    public void deleteMessage();
 }

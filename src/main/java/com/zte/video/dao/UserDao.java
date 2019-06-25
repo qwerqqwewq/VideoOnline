@@ -13,34 +13,20 @@ public interface UserDao {
      * @param  name
      * @return
      **/
-    User checkname(String name);
+    public User selectByName(String name);
 
-    /**
-     * 查询校对用户名密码并确定正确与否
-     * @param name
-     * @param pwd
-     * @return
-     */
-    User loadcheck(String name,String pwd);
-
-    /**
-     * 查询用户权限
-     * @param pid
-     * @return
-     */
-    User selectpower(Integer pid);
 
     /**
      * 用户注册
      * @param user
      * @return
      */
-    void addUser(User user);
+    public void insertUser(User user);
 
     /**
      * 删除用户信息
      * @param user
      */
-    void deleteUser(User user);
+    public void updateUser(User user);
 
 }
