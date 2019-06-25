@@ -17,19 +17,29 @@ public class User implements Serializable{
 
     private String registDate;
 
-    private Integer powerID;
+    private Power power;
 
-    public User(){
+    public User() {
     }
 
-
-    public User(Integer id,String name,String registDate,Integer powerID){
-        this.id=id;
-        this.name=name;
-        this.registDate=registDate;
-        this.powerID=powerID;
+    public User(Integer id, String pwd, String name, String registDate, Power power) {
+        this.id = id;
+        this.pwd = pwd;
+        this.name = name;
+        this.registDate = registDate;
+        this.power = power;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", registDate='" + registDate + '\'' +
+                ", power=" + power +
+                '}';
+    }
 
     public Integer getId() {
         return id;
@@ -63,12 +73,11 @@ public class User implements Serializable{
         this.registDate = registDate;
     }
 
-    public Integer getPowerID() {
-        return powerID;
+    public Power getPower() {
+        return power;
     }
 
-    public void setPowerID(Integer powerID) {
-        this.powerID = powerID;
+    public void setPower(Power power) {
+        this.power = power;
     }
-
 }

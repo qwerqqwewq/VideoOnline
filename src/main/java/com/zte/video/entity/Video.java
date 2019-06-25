@@ -12,7 +12,7 @@ public class Video implements Serializable{
     private String title;
     private String picPath;
     private String videoPath;
-    private Integer typeId;
+    private Type type;
     private String videoTime;
     private String intro;
     private String uploadDate;
@@ -20,12 +20,12 @@ public class Video implements Serializable{
     public Video() {
     }
 
-    public Video(Integer id, String title, String picPath, String videoPath, Integer typeId, String videoTime, String intro, String uploadDate) {
+    public Video(Integer id, String title, String picPath, String videoPath, Type type, String videoTime, String intro, String uploadDate) {
         this.id = id;
         this.title = title;
         this.picPath = picPath;
         this.videoPath = videoPath;
-        this.typeId = typeId;
+        this.type = type;
         this.videoTime = videoTime;
         this.intro = intro;
         this.uploadDate = uploadDate;
@@ -38,7 +38,7 @@ public class Video implements Serializable{
                 ", title='" + title + '\'' +
                 ", picPath='" + picPath + '\'' +
                 ", videoPath='" + videoPath + '\'' +
-                ", typeId=" + typeId +
+                ", type=" + type +
                 ", videoTime='" + videoTime + '\'' +
                 ", intro='" + intro + '\'' +
                 ", uploadDate='" + uploadDate + '\'' +
@@ -77,12 +77,12 @@ public class Video implements Serializable{
         this.videoPath = videoPath;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Type getType() {
+        return type;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public String getVideoTime() {

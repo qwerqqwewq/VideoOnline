@@ -11,18 +11,18 @@ public class VideoComment implements Serializable{
     private Integer id;
     private String content;
     private String commentDate;
-    private Integer vid;
-    private Integer uid;
+    private Video video;
+    private User user;
 
     public VideoComment() {
     }
 
-    public VideoComment(Integer id, String content, String commentDate, Integer vid, Integer uid) {
+    public VideoComment(Integer id, String content, String commentDate, Video video, User user) {
         this.id = id;
         this.content = content;
         this.commentDate = commentDate;
-        this.vid = vid;
-        this.uid = uid;
+        this.video = video;
+        this.user = user;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class VideoComment implements Serializable{
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", commentDate='" + commentDate + '\'' +
-                ", vid=" + vid +
-                ", uid=" + uid +
+                ", video=" + video +
+                ", user=" + user +
                 '}';
     }
 
@@ -60,19 +60,19 @@ public class VideoComment implements Serializable{
         this.commentDate = commentDate;
     }
 
-    public Integer getVid() {
-        return vid;
+    public Video getVideo() {
+        return video;
     }
 
-    public void setVid(Integer vid) {
-        this.vid = vid;
+    public void setVideo(Video video) {
+        this.video = video;
     }
 
-    public Integer getUid() {
-        return uid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
