@@ -62,4 +62,7 @@ public class MessageComment {
     private Integer mid;
     private Integer uid;
     private String commentDate;
+
+
+
 }

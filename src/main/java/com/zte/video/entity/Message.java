@@ -15,19 +15,26 @@ public class Message implements Serializable {
 
     private String messageDate;
 
-    private Integer uid;
+    private User user;
 
-    public User getUser() {
-        return user;
+    public Message() {
     }
 
-    public void setUser(User user) {
+    public Message(Integer id, String content, String messageDate, User user) {
+        this.id = id;
+        this.content = content;
+        this.messageDate = messageDate;
         this.user = user;
     }
 
-    private User user;
-
-    public Message(){
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", messageDate='" + messageDate + '\'' +
+                ", user=" + user +
+                '}';
     }
 
     public Integer getId() {
@@ -54,20 +61,11 @@ public class Message implements Serializable {
         this.messageDate = messageDate;
     }
 
-    public Integer getUid() {
-        return uid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-    public Message(Integer id,String content,String messageDate,Integer uid,User user){
-        this.id=id;
-        this.content=content;
-        this.messageDate=messageDate;
-        this.uid=uid;
-        this.user=user;
-    }
-
 }
