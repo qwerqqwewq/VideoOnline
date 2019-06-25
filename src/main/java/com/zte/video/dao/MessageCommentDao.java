@@ -5,5 +5,5 @@ package com.zte.video.dao;
  * Date:2019-06-24 17:31
  * Description:<描述>
  */
-public class MessageCommentDao {
+public interface MessageCommentDao {
 }
