@@ -6,8 +6,8 @@ import com.zte.video.entity.User;
 import java.util.List;
 
     /**
-     * Author:helloboy
-     * Date:2019-06-25 14:19
+     * @Author:helloboy
+     * @Date:2019-06-25 14:19
      * Description:<描述>
      */
 public interface FavoritesDao {
