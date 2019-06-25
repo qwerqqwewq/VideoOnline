@@ -6,8 +6,8 @@ import com.zte.video.entity.MessageComment;
 import java.util.Set;
 
 /**
- * Author:helloboy
- * Date:2019-06-24 17:31
+ * @Author:helloboy
+ * @Date:2019-06-24 17:31
  * Description:<描述>
  */
 public interface MessageCommentDao {
@@ -31,5 +31,8 @@ public interface MessageCommentDao {
      * @return
      */
     public MessageComment deleteMessageCommentByID(Integer id);
-
+    /**
+     * 清空
+     */
+    public int deleteAllMessageComment();
 }

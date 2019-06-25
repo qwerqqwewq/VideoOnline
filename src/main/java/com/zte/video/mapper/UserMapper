@@ -8,9 +8,53 @@
         <result property="pwd" column="upwd"/>
         <result property="name" column="uname"/>
         <result property="registDate" column="uregistDate"/>
-        <association property="powerID"
-
-
+        <association property="power" column="T_power" select="selectPowerByID"/>
     </resultMap>
-    <select id="checkname" resultMap="com.zte.video.vo.UserVo"></select>
+    <select id="selectByName" resultMap="ruser">
+        SELECT
+        u.id uid,
+        u.pwd upwd,
+        u.name uname,
+        u.registDate uregistDate
+
+        p.power T_Power
+        FROM
+        t_user u
+        LEFT JOIN t_power p
+        ON p.id=u.powerID
+        WHERE u.name=#{name}
+
+
+    </select>
+
+
+
+    <select id="insertUser" resultType="user">
+        INSERT INTO
+        t_user
+        (pwd,name,registDate,powerID)
+        VALUES
+        (#{pwd},#{name},#{registDate},#{powerID})
+    </select>
+
+
+
+
+    <select id="updateUser" resultType="user">
+        UPDATE
+        t_user
+        SET
+        name=#{user.name}
+        pwd=#{user.pwd}
+        registDate=#{user.registDate}
+    </select>
 </mapper>
+
+
+
+
+
+
+
+
+
