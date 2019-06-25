@@ -34,5 +34,5 @@ public interface MessageCommentDao {
     /**
      * 清空
      */
-    public void deleteAllMessageComment();
+    public int deleteAllMessageComment();
 }

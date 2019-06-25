@@ -9,9 +9,9 @@ import java.io.Serializable;
  */
 public class Favorites implements Serializable {
 
-    private Integer id;
+    private User user;
 
-    private Integer uid;
+    private Integer id;
 
     private String name;
 
@@ -19,26 +19,20 @@ public class Favorites implements Serializable {
 
     private String createDate;
 
-    public User getUser() {
-        return user;
+    public Favorites(){}
+    public Favorites(Integer id,String name,String   createDate,Integer uid,String remark,User user){
+        this.name=name;
+        this.createDate=createDate;
+        this.id=id;
+        this.remark=remark;
+        this.user=user;
     }
+
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    private User user;
-
-    public Favorites(){
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -65,31 +59,21 @@ public class Favorites implements Serializable {
     }
 
     public Integer getUid() {
-        return uid;
+        return id;
     }
 
     public void setUid(Integer uid) {
-        this.uid = uid;
-    }
-
-    public Favorites(Integer id,String name,String   createDate,Integer uid,String remark,User user){
-        this.id=id;
-        this.name=name;
-        this.createDate=createDate;
-        this.uid=uid;
-        this.remark=remark;
-        this.user=user;
+        this.id = uid;
     }
 
     @Override
     public String toString() {
         return "Favorites{" +
-                "id=" + id +
-                ", uid=" + uid +
+                "user=" + user +
+                ", uid=" + id +
                 ", name='" + name + '\'' +
                 ", remark='" + remark + '\'' +
                 ", createDate='" + createDate + '\'' +
-                ", user=" + user +
                 '}';
     }
 }
