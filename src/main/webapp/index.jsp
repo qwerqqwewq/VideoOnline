@@ -1,11 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <title>登录界面</title>
 <body>
-    <center>
-        <h1></h1>
-        <form>
-
-        </form>
-    </center>
+    <%request.getRequestDispatcher("/main").forward(request,response); %>
 </body>
 </html>
