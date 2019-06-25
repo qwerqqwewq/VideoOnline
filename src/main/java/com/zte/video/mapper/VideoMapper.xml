@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.VideoDao">
+<!--//选择所有视频
+    public Set<Video> selectAll();
+
+    //根据名称查找视频
+    public Video selectByTitle(String title);
+
+    //修改视频
+    public int updateVideo(Video video);
+
+    //插入视频
+    public int insertVideo(Video video);
+    -->
+
+    <!-- //选择所有视频
+    public Set<Video> selectAll();-->
+    <resultMap id="rsm" type="video">
+        <id property="id" column="id"/>
+        <result property="title" column="title" />
+        <result property="picPath" column="picPath" />
+        <result property="videoPath" column="videoPath" />
+        <result property="type.id" column="typeId" />
+        <result property="type.type" column="type" />
+        <result property="videoTime" column="videoTime" />
+        <result property="intro" column="intro" />
+        <result property="uploadDate" column="uploadDate" />
+
+    </resultMap>
+    <select id="selectAll" resultMap="rsm">
+        SELECT
+        b.id id,
+        b.title title,
+        b.picPath picPath,
+        b.videoPath videoPath,
+        b.typeId typeId,
+        (
+        select
+        c.type
+        from t_type c
+        where c.id = b.typeID
+        )as type,
+        b.videoTime videoTime,
+        b.intro intro,
+        b.uploadDate uploadDate
+
+        from t_video b
+        ORDER BY b.uploadDate DESC
+
+    </select>
+
+    <!-- //根据名称查找视频
+    public Video selectByTitle(String title);-->
+    <select id="selectByTitle" parameterType="video" resultMap="rsm">
+        SELECT
+        b.id id,
+        b.title title,
+        b.picPath picPath,
+        b.videoPath videoPath,
+        b.typeId typeId,
+        (
+        select
+        c.type
+        from t_type c
+        where c.id = b.typeID
+        )as type,
+        b.videoTime videoTime,
+        b.intro intro,
+        b.uploadDate uploadDate
+
+        from t_video b
+        WHERE b.title = #{title}
+    </select>
+
+    <!-- //插入视频
+    public int insertVideo(Video video);-->
+    <insert id="insertVideo" parameterType="video">
+        insert into
+        t_video
+        (title,picPath,videoPath,typeId,videoTime,intro,uploadDate)
+        VALUES
+        (#{title},#{picPath},#{videoPath},#{type.id},#{videoTime},#{intro},#{uploadDate})
+    </insert>
+
+    <!-- //修改视频
+    public int updateVideo(Video video);-->
+    <update id="updateVideo" parameterType="video">
+        UPDATE t_video
+        SET
+        title = #{title},
+        picPath = #{picPath},
+        videoPath = #{videoPath},
+        typeId = #{type.id},
+        videoTime = #{videoTime},
+        intro = #{intro},
+        WHERE
+        id = #{id}
+    </update>
+</mapper>
