@@ -1,11 +1,13 @@
 package com.zte.video.entity;
 
+import java.io.Serializable;
+
 /**
  * Author:helloboy
  * Date:2019-06-25 10:30
  * Description:<描述>
  */
-public class Type {
+public class Type implements Serializable {
     private Integer id;
     private String type;
 

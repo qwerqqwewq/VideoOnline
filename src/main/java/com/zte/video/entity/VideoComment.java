@@ -1,11 +1,13 @@
 package com.zte.video.entity;
 
+import java.io.Serializable;
+
 /**
  * Author:helloboy
  * Date:2019-06-25 10:29
  * Description:<描述>
  */
-public class VideoComment {
+public class VideoComment implements Serializable{
     private Integer id;
     private String content;
     private String commentDate;
