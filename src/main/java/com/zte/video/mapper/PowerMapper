@@ -3,17 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zte.video.dao.PowerDao">
-
+    <resultMap id="rpower" type="power">
+        <id property="id" column="powerID"/>
+        <result property="power" column="T_Power"/>
+    </resultMap>
 
     <select id="selectPowerByID" parameterType="power">
-
-
         SELECT power FROM t_power WHERE id=#{id}
-
-
     </select>
-
-
-
-
 </mapper>

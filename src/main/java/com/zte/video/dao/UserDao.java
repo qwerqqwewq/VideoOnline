@@ -9,7 +9,7 @@ import com.zte.video.entity.User;
  */
 public interface UserDao {
     /**
-     * 查询t_user中是否有此用户名存在
+     * 根据用户姓名查询
      * @param  name
      * @return
      **/
