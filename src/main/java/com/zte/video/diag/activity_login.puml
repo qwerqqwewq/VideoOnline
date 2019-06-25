@@ -1,0 +1,25 @@
+@startuml
+(*)  --> "用户输入用户名和密码"
+partition 非空验证 {
+If "用户名存在？" then
+-right-> [No] "用户输入用户名和密码"
+}
+Else
+    --> "密码md5加密后是否相同？"
+    partition 密码验证 {
+        If "相同" then
+            -down->[Yes]登陆成功
+    }
+            --> "判断是否是管理员"
+            If "is admin" then
+                -left->[Yes] "提供管理员功能接口"
+                -left->(*)
+            Else
+                -->[No](*)
+            Endif
+
+         Else
+            -->[No] "用户输入用户名和密码"
+         Endif
+Endif
+@enduml
