@@ -46,6 +46,17 @@ public class MessageComment {
         this.commentDate = commentDate;
     }
 
+    public MessageComment(){
+    }
+
+    public MessageComment(Integer id,String content,Integer mid,Integer uid,String commentDate){
+        this.id=id;
+        this.content=content;
+        this.mid=mid;
+        this.uid=uid;
+        this.commentDate=commentDate;
+    }
+
     private Integer id;
     private String content;
     private Integer mid;

@@ -32,4 +32,7 @@ public class Power implements Serializable{
         this.id=id;
         this.power=power;
     }
+
+    public Power(){
+    }
 }
