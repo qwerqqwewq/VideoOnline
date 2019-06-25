@@ -43,6 +43,12 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public Video findById(Integer id) {
+        return videoDao.selectById(id);
+    }
+
+    @Override
     public int modifyVideo(Video video) {
         return videoDao.updateVideo(video);
     }
