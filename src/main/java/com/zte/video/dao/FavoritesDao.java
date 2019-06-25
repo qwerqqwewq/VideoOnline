@@ -3,7 +3,7 @@ package com.zte.video.dao;
 import com.zte.video.entity.Favorites;
 import com.zte.video.entity.User;
 
-import java.util.Set;
+import java.util.List;
 
     /**
      * Author:helloboy
@@ -15,13 +15,13 @@ public interface FavoritesDao {
      * 查询所有收藏夹
      * @return
      */
-    public Set<Favorites> selectAll();
+    public List<Favorites> selectAll();
     /**
      * 根据用户查询收藏夹
      * @param user
      * @return
       */
-    public Set<Favorites> selectById(User user);
+    public List<Favorites> selectById(User user);
     /**
      * 添加一个收藏夹
      * @param favorites
