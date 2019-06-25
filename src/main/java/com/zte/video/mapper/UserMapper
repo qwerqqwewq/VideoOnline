@@ -48,7 +48,6 @@
         SET
         name=#{name}
         pwd=#{pwd}
-        registDate=#{registDate}
         WHERE
         id=#{id}
     </select>
