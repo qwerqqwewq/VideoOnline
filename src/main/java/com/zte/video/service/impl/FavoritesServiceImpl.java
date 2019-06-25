@@ -2,9 +2,7 @@ package com.zte.video.service.impl;
 
 import com.zte.video.dao.FavoritesDao;
 import com.zte.video.entity.Favorites;
-import com.zte.video.entity.Video;
 import com.zte.video.service.PowerService;
-import com.zte.video.utils.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
