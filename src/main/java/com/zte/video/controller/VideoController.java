@@ -42,6 +42,12 @@ public class VideoController {
         video.setType(type);
         Gson gson = new Gson();
         Map map = new HashMap();
+        //进行转码
+        //--转码操作--
+        //--转码操作--
+        //进行保存
+        //--保存操作--
+        //--保存操作--
         map.put("result", videoService.addVideo(video));
         return gson.toJson(map);
     }
@@ -56,7 +62,16 @@ public class VideoController {
         video.setType(type);
         Gson gson = new Gson();
         Map map = new HashMap();
-        map.put("result", videoService.modifyVideo(video));
+        //查看是否存在对应记录
+        if (videoService.findById(video.getId())!=null) {
+            //进行修改操作
+            map.put("result", videoService.modifyVideo(video));
+            map.put("msg", "有对应记录");
+        }
+        else {
+            map.put("result", -1);
+            map.put("msg", "无对应记录");
+        }
         return gson.toJson(map);
     }
 
