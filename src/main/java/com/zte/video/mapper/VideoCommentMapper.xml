@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.VideoCommentDao">
+
+    <resultMap id="rsm" type="videoComment">
+        <id property="id" column="id" />
+        <result property="content" column="content" />
+        <result property="commentDate" column="" />
+        <result property="video.id" column="vid" />
+        <result property="video.title" column="vname" />
+        <result property="user.id" column="uid" />
+        <result property="user.name" column="uname" />
+    </resultMap>
+
+    <!-- /**
+     * 选择所有评论
+     * @return
+     */
+    public List<VideoComment> selectAll();-->
+    <select id="selectAll" resultMap="rsm">
+        SELECT
+        b.content content,
+        b.commentDate commentDate,
+        b.vid vid,
+        (
+        SELECT
+        c.title
+        FROM
+        t_video c
+        WHERE
+        c.id=b.vid
+        ) as vname,
+        b.uid uid,
+        (
+        SELECT
+        c.`name`
+        FROM
+        t_user c
+        WHERE
+        c.id=b.uid
+        ) as uname
+        from
+        t_video_comment b
+        ORDER BY b.commentDate ASC ;
+    </select>
+
+    <!-- /**
+     * 插入一条视频评论
+     *
+     * @param videoComment
+     * @return
+     */
+    public int insertVideoComment(VideoComment videoComment);-->
+    <insert id="insertVideoComment" parameterType="videoComment">
+        INSERT INTO t_video_comment
+        (content,commentDate,vid,uid)
+        VALUES
+        (#{content},#{commentDate},#{video.id},#{user.id});
+    </insert>
+
+    <!-- /**
+     * 更新一条评论，删除操作实际上也是更新操作
+     * @param videoComment
+     * @return
+     */
+    public int updateVideoComment(VideoComment videoComment);-->
+    <update id="updateVideoComment" parameterType="videoComment">
+        update t_video_comment
+        SET
+        content = #{content},
+        commentDate = #{commentDate},
+        vid = #{video.id},
+        uid =#{user.id}
+        WHERE
+        id = #{id};
+
+    </update>
+
+    <!-- /**
+     * 根据用户选择评论
+     * @param user
+     * @return
+     */
+    public List<VideoComment> selectByUser(User user);-->
+    <select id="selectByUser" resultMap="rsm" parameterType="user">
+        SELECT
+        b.content content,
+        b.commentDate commentDate,
+        b.vid vid,
+        (
+        SELECT
+        c.title
+        FROM
+        t_video c
+        WHERE
+        c.id=b.vid
+        ) as vname,
+        b.uid uid,
+        (
+        SELECT
+        c.`name`
+        FROM
+        t_user c
+        WHERE
+        c.id=b.uid
+        ) as uname
+        from
+        t_video_comment b
+        WHERE
+        b.uid = #{user.id}
+        ORDER BY b.commentDate ASC ;
+    </select>
+
+    <!-- /**
+     * 根据视频选择评论
+     * @param video
+     * @return
+     */
+    public List<VideoComment> selectByVideo(Video video);-->
+    <select id="selectByVideo" parameterType="video" resultMap="rsm">
+        SELECT
+        b.content content,
+        b.commentDate commentDate,
+        b.vid vid,
+        (
+        SELECT
+        c.title
+        FROM
+        t_video c
+        WHERE
+        c.id=b.vid
+        ) as vname,
+        b.uid uid,
+        (
+        SELECT
+        c.`name`
+        FROM
+        t_user c
+        WHERE
+        c.id=b.uid
+        ) as uname
+        from
+        t_video_comment b
+        WHERE
+        b.vid = #{video.id}
+        ORDER BY b.commentDate ASC ;
+    </select>
+
+</mapper>
