@@ -2,8 +2,12 @@ package com.zte.video.service.impl;
 
 import com.zte.video.dao.FavoritesDao;
 import com.zte.video.entity.Favorites;
-import com.zte.video.service.PowerService;
+import com.zte.video.entity.User;
+import com.zte.video.service.FavoritesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,8 +16,9 @@ import java.util.List;
  * Date:2019-06-25 17:09
  * Description:<描述>
  */
+@Service
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-public class FavoritesServiceImpl implements PowerService.FavoritesService {
+public class FavoritesServiceImpl implements FavoritesService {
     @Autowired
     private FavoritesDao favoritesDao;
 
@@ -24,6 +29,12 @@ public class FavoritesServiceImpl implements PowerService.FavoritesService {
      */
     public List<Favorites> findAll() {
         return favoritesDao.selectAll();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public List<Favorites> findById(User user) {
+        return favoritesDao.selectById(user);
     }
 
     @Override
@@ -43,4 +54,6 @@ public class FavoritesServiceImpl implements PowerService.FavoritesService {
     public int updateFavorites(Favorites favorites) {
         return favoritesDao.deleteFavorites(favorites);
     }
+
+
 }
