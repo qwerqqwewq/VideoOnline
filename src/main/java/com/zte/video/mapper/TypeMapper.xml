@@ -9,7 +9,7 @@
      * @return
      */
     public List<Type> selectAll();-->
-    <select id="selectAll" parameterType="type">
+    <select id="selectAll" resultType="type">
         select
         id,
         type

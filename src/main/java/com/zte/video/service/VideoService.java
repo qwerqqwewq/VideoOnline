@@ -24,6 +24,13 @@ public interface VideoService {
     public Video findByTitle(String title);
 
     /**
+     * 根据id查找视频
+     * @param id
+     * @return
+     */
+    public Video findById(Integer id);
+
+    /**
      * 修改视频
      * @param video
      * @return

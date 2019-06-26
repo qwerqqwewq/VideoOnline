@@ -6,8 +6,8 @@ import com.zte.video.entity.User;
 import java.util.List;
 
     /**
-     * Author:helloboy
-     * Date:2019-06-25 14:19
+     * @Author:helloboy
+     * @Date:2019-06-25 14:19
      * Description:<描述>
      */
 public interface FavoritesDao {
@@ -27,17 +27,17 @@ public interface FavoritesDao {
      * @param favorites
      * @return
      */
-    public void insertFavorites(Favorites favorites);
+    public int insertFavorites(Favorites favorites);
     /**
      * 修改收藏夹
      * @param favorites
      * @return
       */
-    public void updateFavorites(Favorites favorites);
+    public int updateFavorites(Favorites favorites);
     /**
      * 删除收藏夹
      * @param favorites
      * @return
      */
-    public void deleteFavorites(Favorites favorites);
+    public int deleteFavorites(Favorites favorites);
 }

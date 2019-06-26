@@ -3,8 +3,8 @@ package com.zte.video.entity;
 import java.io.Serializable;
 
 /**
- * Author:helloboy
- * Date:2019-06-25 9:13
+ * @Author:helloboy
+ * @Date:2019-06-25 9:13
  * Description:<描述>
  */
 public class Power implements Serializable{
