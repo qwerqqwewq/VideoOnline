@@ -36,10 +36,6 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addUser(User user) {
-        user.setRegistDate(CurrentDate.getCurrentDate());
-        Power power = new Power();
-        power.setId(1);
-        user.setPower(power);
         return userDao.insertUser(user);
     }
 
@@ -55,4 +51,11 @@ public class UserServiceImpl implements UserService{
     public User findPowerByName(String name){
         return userDao.selectPowerByName(name);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public User findByID(Integer id){
+        return userDao.selectByID(id);
+    }
+
 }

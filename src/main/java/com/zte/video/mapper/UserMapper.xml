@@ -67,9 +67,7 @@
         t_user
         (pwd,name,registDate,powerID)
         VALUES
-        (#{pwd},#{name},#{registDate},#{powerID})
-        WHERE
-        id=#{id}
+        (#{pwd},#{name},#{registDate},'2')
     </insert>
 
     <select id="selectByID" resultMap="ruser">
