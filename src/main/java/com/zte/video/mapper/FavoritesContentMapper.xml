@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.FavoritesContentDao">
+    <resultMap id="RM" type="FavoritesContent">
+        <id property="id" column="id"/>
+        <result property="vid" column="vid" />
+        <result property="fid" column="fid" />
+        <result property="createDate" column="createDate" />
+        <result property="remark" column="remark" />
+        <result property="favorites.name" column="uname" />
+
+    </resultMap>
+    <select id="selectAll" resultMap="RM">
+        SELECT
+        b.id id,
+        b.uid uid,
+        b.fid fid,
+        b.createDate createDate,
+        b.remark remark,
+        (
+        select
+        c.name
+        from t_favorites c
+        where c.id = b.fid
+        )as uname ,
+
+        from t_favorites_content b
+        ORDER BY b.createDate DESC
+
+    </select>
+    <select id="selectByFavorites" parameterType="favorites" resultMap="RM">
+                SELECT
+        b.id id,
+        b.uid uid,
+        b.fid fid,
+        b.createDate createDate,
+        b.remark remark,
+        (
+        select
+        c.name
+        from t_favorites c
+        where c.id = b.fid
+        )as uname ,
+
+        from t_favorites_content b
+        where c.name=#{name}
+        ORDER BY b.createDate DESC
+    </select>
+    <insert id="insertFavoritesContent" parameterType="FavoritesContent">
+        insert INTO
+        t_favorites_content
+        (vid,fid,createDate,,remark)
+        VALUES
+        {#{video.id},#{favorites.id},#(createDate),#(remark)}
+    </insert>
+    <update id="updateFavoritescontent" parameterType="FavoritesContent">
+        UPDATE t_favorites_content
+        SET
+        vid=#{video.id},
+        fid=#(favorites.id),
+        createDate=#(createDate),
+        remark=#{remark},
+        WHERE
+        id=#{id}
+    </update>
+    <delete id="deleteFavoritesContent" parameterTyqpe="FavoritesContent">
+        DELETE FROM
+        t_favorites_content
+        WHERE id=#{id}
+    </delete>
+</mapper>
