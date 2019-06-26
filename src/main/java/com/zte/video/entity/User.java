@@ -1,6 +1,7 @@
 package com.zte.video.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Author:helloboy
@@ -18,6 +19,8 @@ public class User implements Serializable{
     private String registDate;
 
     private Power power;
+
+    private Set<Power> powers;
 
 
 

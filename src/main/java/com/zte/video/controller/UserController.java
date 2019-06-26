@@ -1,7 +1,6 @@
 package com.zte.video.controller;
 
 import com.google.gson.Gson;
-import com.zte.video.entity.Power;
 import com.zte.video.entity.User;
 import com.zte.video.service.PowerService;
 import com.zte.video.service.UserService;
@@ -49,16 +48,15 @@ public class UserController {
      */
     @RequestMapping( "/login.do")
     String login(HttpServletRequest req,String name,String pwd)throws InvocationTargetException,IllegalAccessException{
-        User user = new User();
-        Power power=new Power();
-        BeanUtils.populate(user,req.getParameterMap());
         Map map=new HashMap<>();
         Gson gson =new Gson();
+        User user = new User();
+        BeanUtils.populate(user,req.getParameterMap());
         user.setName(name);
         if (userService.findByName(name)!=null){
-            if (userService.findByName(name).getPwd().toString().equals(pwd)){
+            if (userService.findByName(user.getName()).getPwd().toString().equals(pwd)){
                 String a="管理员";
-                if (userService.findPowerByName(name).toString().equals(a)) {
+                if (userService.findPowerByName(user.getName()).toString().equals(a)) {
                     return "video/insert";
                 }else {
                     return "main";
@@ -88,6 +86,7 @@ public class UserController {
         User user=new User();
         BeanUtils.populate(user,req.getParameterMap());
         String name=req.getParameter("name");
+        user.setName(name);
         String pwd=req.getParameter("pwd");
         String tpwd=req.getParameter("tpwd");
         if (pwd==tpwd){
