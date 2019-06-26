@@ -29,7 +29,7 @@ public class FavoritesController {
     user = userService.findById()
     List<Favorites> favorites = favoritesService.findById(user);
     model.addAttribute("favorites",favorites);
-    return "/favorites/find";
+    return "/favorites/findByUser";
 }
 
 }
