@@ -67,7 +67,7 @@
         WHERE
         id=#{id}
     </update>
-    <delete id="deleteFavorites" parameterTyqpe="favorites">
+    <delete id="deleteFavorites" parameterType="favorites">
         DELETE FROM
         t_favorites
         WHERE id=#{id}
