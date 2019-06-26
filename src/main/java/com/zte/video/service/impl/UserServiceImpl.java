@@ -51,4 +51,11 @@ public class UserServiceImpl implements UserService{
     public User findPowerByName(String name){
         return userDao.selectPowerByName(name);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public User findByID(Integer id){
+        return userDao.selectByID(id);
+    }
+
 }

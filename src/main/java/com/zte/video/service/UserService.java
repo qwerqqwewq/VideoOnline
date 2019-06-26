@@ -36,6 +36,13 @@ public interface UserService {
      */
     public User findPowerByName(String name);
 
+    /**
+     * 根据id查找
+     * @param id
+     * @return
+     */
+    public User findByID(Integer id);
+
 
 
 }
