@@ -36,10 +36,6 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addUser(User user) {
-        user.setRegistDate(CurrentDate.getCurrentDate());
-        Power power = new Power();
-        power.setId(1);
-        user.setPower(power);
         return userDao.insertUser(user);
     }
 

@@ -1,9 +1,11 @@
 package com.zte.video.controller;
 
 import com.google.gson.Gson;
+import com.zte.video.entity.Power;
 import com.zte.video.entity.User;
 import com.zte.video.service.PowerService;
 import com.zte.video.service.UserService;
+import com.zte.video.utils.CurrentDate;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,23 +83,32 @@ public class UserController {
      * 2、判断该用户名是否已存在
      * 3、通过提交向user表中插入用户信息
      */
-    @RequestMapping(value = "/regist")
-    private String regist(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
-        User user=new User();
-        BeanUtils.populate(user,req.getParameterMap());
-        String name=req.getParameter("name");
-        user.setName(name);
-        String pwd=req.getParameter("pwd");
-        String tpwd=req.getParameter("tpwd");
-        if (pwd==tpwd){
-            if(userService.findByName(name)!=null){
+    @RequestMapping(value = "/regist.do")
+    private String regist(HttpServletRequest req,String pwd,String tpwd)throws InvocationTargetException,IllegalAccessException{
+        Map map = new HashMap<>();
+        Gson gson = new Gson();
+        if (pwd.equals(tpwd)) {
+            User user = new User();
+            BeanUtils.populate(user, req.getParameterMap());
+            Power power = new Power();
+            String name = req.getParameter("name");
+            user.setName(name);
+            user.setPwd(pwd);
+            user.setRegistDate(CurrentDate.getCurrentDate());
+            if (userService.findByName(name)==null) {
                 userService.addUser(user);
-                return "success";
-            }else {
-                return "该用户名已存在";
+                return "regist/success";
+            } else {
+                map.put("msg", "该用户名已存在");
             }
         }else {
-            return "两次密码不相同";
+            map.put("msg","两次密码不相同");
         }
+        return gson.toJson(map);
+    }
+
+    @RequestMapping("/regist")
+    String registpage(){
+        return "regist/regist";
     }
 }
