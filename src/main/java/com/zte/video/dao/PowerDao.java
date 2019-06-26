@@ -14,4 +14,11 @@ public interface PowerDao {
      * @return
      */
     public Power selectPowerByID(Integer id);
+
+    /**
+     * 根据name查询权限值
+     * @param name
+     * @return 
+     */
+    public Power selectPowerByName(String name);
 }

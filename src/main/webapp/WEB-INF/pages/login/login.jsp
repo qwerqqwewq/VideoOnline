@@ -7,8 +7,8 @@
 <body>
     <center>
         <form action="${pageContext.request.contextPath}/user/login.do" method="post">
-            用户名：<input name="name" type="text"/>
-            密码：<input name="pwd" type="password"/>
+            用户名：<input name="name"/>
+            密码：<input name="pwd"/>
             <div><input type="submit" value="提交"></div>
         </form>
     </center>

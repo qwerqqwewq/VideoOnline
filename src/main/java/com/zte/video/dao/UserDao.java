@@ -15,6 +15,8 @@ public interface UserDao {
      **/
     public User selectByName(String name);
 
+    public User selectByID(Integer id);
+
 
     /**
      * 用户注册

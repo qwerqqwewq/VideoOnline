@@ -6,9 +6,19 @@
     <resultMap id="rpower" type="power">
         <id property="id" column="powerID"/>
         <result property="power" column="power"/>
+        <collection property="users" ofType="user">
+            <id property="id" column="userID"/>
+            <result property="name" column="userName"/>
+        </collection>
     </resultMap>
 
     <select id="selectPowerByID" parameterType="power">
         SELECT power FROM t_power WHERE id=#{id}
+    </select>
+    <select id="selectPowerByName" parameterType="power">
+        SELECT
+        p.power
+        FROM t_power p
+        WHERE u.name=#{name}
     </select>
 </mapper>

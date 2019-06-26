@@ -1,6 +1,7 @@
 package com.zte.video.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * @Author:helloboy
@@ -9,6 +10,8 @@ import java.io.Serializable;
  */
 public class Power implements Serializable{
     private Integer id;
+
+    private Set<User> users;
 
     public Integer getId() {
         return id;

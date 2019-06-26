@@ -16,16 +16,20 @@
         u.pwd upwd,
         u.name uname,
         u.registDate uregistDate,
-
-        p.power power
+        (
+        SELECT
+        p.power
         FROM
-        t_user u
-        LEFT JOIN t_power p
-        ON p.id=u.powerID
+        t_power p
+        WHERE
+        p.id=u.powerID
+        )AS TYPE
+        FROM t_user u
         WHERE u.name=#{name}
 
 
     </select>
+
 
 
 
@@ -38,6 +42,15 @@
         WHERE
         id=#{id}
     </insert>
+
+    <select id="selectByID" parameterType="user">
+        SELECT
+        *
+        FROM
+        t_user
+        WHERE
+        id=#{id}
+    </select>
 
 
 

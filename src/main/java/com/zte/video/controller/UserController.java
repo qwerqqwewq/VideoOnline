@@ -47,20 +47,18 @@ public class UserController {
      *  2、该用户对应的密码是否正确
      *
      */
-    @RequestMapping(value = "/login.do")
-    private String login(HttpServletRequest req,String username,String password)throws InvocationTargetException,IllegalAccessException{
+    @RequestMapping( "/login.do")
+    String login(HttpServletRequest req,String name,String pwd)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
         Power power=new Power();
         BeanUtils.populate(user,req.getParameterMap());
-        BeanUtils.populate(power,req.getParameterMap());
         Map map=new HashMap<>();
         Gson gson =new Gson();
-        user.setName(username);
-        user.setPower(power);
-        if (userService.findByName(username)!=null){
-            if (userService.findByName(username).getPwd().toString().equals(password)){
+        user.setName(name);
+        if (userService.findByName(name)!=null){
+            if (userService.findByName(name).getPwd().toString().equals(pwd)){
                 String a="管理员";
-                if (userService.findByName(username).getPower().getPower().toString().equals(a)) {
+                if (powerService.findPowerByName(name).toString().equals(a)) {
                     return "video/insert";
                 }else {
                     return "main";
