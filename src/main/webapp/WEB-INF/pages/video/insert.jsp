@@ -5,10 +5,9 @@
     <title>插入视频</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/video/insert.do" method="post">
+<form action="${pageContext.request.contextPath}/video/insert.do" method="post" enctype="multipart/form-data">
     <div>标题</div><input name="title" /><br>
-    <div>封面路径</div><input name="picPath"><br>
-    <div>视频路径</div><input name="videoPath"><br>
+    <div>视频路径</div><input type="file" name="v_video"><br>
     <div>视频时长</div><input name="videoTime"><br>
     <div>简介</div><input name="intro"><br>
     <div>类型</div><br>

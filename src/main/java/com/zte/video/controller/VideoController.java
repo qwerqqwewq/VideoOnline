@@ -5,6 +5,7 @@ import com.zte.video.entity.Type;
 import com.zte.video.entity.Video;
 import com.zte.video.service.TypeService;
 import com.zte.video.service.VideoService;
+import com.zte.video.utils.MediaUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,21 +35,19 @@ public class VideoController {
 
     @RequestMapping("/insert.do")
     @ResponseBody
-    String insertVideo(HttpServletRequest req, Integer typeId) throws InvocationTargetException, IllegalAccessException {
+    String insertVideo(HttpServletRequest req, Integer typeId) throws Exception {
         Video video = new Video();
-        BeanUtils.populate(video, req.getParameterMap());
-        Type type = new Type();
-        type.setId(typeId);
-        video.setType(type);
         Gson gson = new Gson();
-        Map map = new HashMap();
-        //进行转码
-        //--转码操作--
-        //--转码操作--
-        //进行保存
-        //--保存操作--
-        //--保存操作--
-        map.put("result", videoService.addVideo(video));
+        Map map = null;
+        //进行保存和转码操作
+        map = MediaUtils.uploadMedia(req, video);
+        System.out.println(map);
+        Object flag = map.get("upload");
+        if (flag != null && (boolean) flag) {
+            System.out.println(video);
+            map.put("result", videoService.addVideo(video));
+            map.put("video", video);
+        }
         return gson.toJson(map);
     }
 
