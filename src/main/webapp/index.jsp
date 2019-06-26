@@ -3,6 +3,6 @@
 <html>
 <title>欢迎光临</title>
 <body>
-    <%request.getRequestDispatcher("/main").forward(request,response); %>
+    <%request.getRequestDispatcher("/user/login").forward(request,response); %>
 </body>
 </html>

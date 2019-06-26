@@ -7,9 +7,19 @@
         <id property="id" column="mid"/>
         <result property="content" column="mcontent"/>
         <result property="messageDate" column="mDate"/>
-        <collection property="messageComments" ofType="messageComment">
-            <id property="id" column="cid"/>
-            <result property="content" column="ccontent"/>
-        </collection>
+        <result property="messageComment.id" column="cid/"/>
+        <result property="messageComment.content" column="Mcon"/>
+        <result property="messageComment.user" column="muser"/>
+        <result property="messageComment.commentDate" column="mDate"/>
     </resultMap>
+
+    <select id="selectAll" resultType="com.zte.video.vo.MessageVo">
+        SELECT
+        m.id,
+        m.content,
+        m.messageDate,
+
+    </select>
+
+
 </mapper>
