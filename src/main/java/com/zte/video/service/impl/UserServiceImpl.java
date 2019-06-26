@@ -11,17 +11,17 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @Author:helloboy
- * @Date:2019-06-25 13:26
- * Description:<描述>
- */
-@Service
-/**
  *让该类被spring管理，注解有效，注意这里在配置文件中需要扫包
  *配置事务,在类上配置事务，该事务作用于类中的所有方法，在方法上配置事务，该事务只作用于该方法
  *Propagation.REQUIRED:事务的默认隔离级别,
  *rollbackFor = Exception.class:当出现异常时回滚事务
  */
+/**
+ * @Author:helloboy
+ * @Date:2019-06-25 13:26
+ * Description:<描述>
+ */
+@Service
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService{
     @Autowired
