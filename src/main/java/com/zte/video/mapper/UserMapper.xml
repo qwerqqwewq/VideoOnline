@@ -8,8 +8,16 @@
         <result property="pwd" column="upwd"/>
         <result property="name" column="uname"/>
         <result property="registDate" column="uregistDate"/>
-        <association property="power" column="power" select="selectPowerByID"/>
+        <result property="power.id" column="cid"/>
+        <result property="power.power" column="cpower"/>
     </resultMap>
+
+    <!-- /**
+     * 根据用户姓名查询
+     * @param  name
+     * @return
+     **/
+    public User selectByName(String name);-->
     <select id="selectByName" resultMap="ruser">
         SELECT
         u.id uid,
@@ -17,32 +25,38 @@
         u.name uname,
         u.registDate uregistDate,
         (
-        SELECT
-        p.power
-        FROM
-        t_power p
+        SELECT c.power FROM
+        t_power c
         WHERE
-        p.id=u.powerID
-        )AS TYPE
+        c.id=(
+        SELECT
+        powerID
+        FROM
+        t_user
+        WHERE
+        name=#{name}
+         )
+          )AS power
         FROM t_user u
         WHERE u.name=#{name}
 
 
     </select>
 
-    <select id="selectPowerByName" parameterType="user">
+    <select id="selectPowerByName" resultMap="ruser">
         SELECT
-        p.power
-        FROM t_power p
+        c.power cpower
+        FROM t_power c
         WHERE
+        c.id=
         (
         SELECT
-        u.id
+        u.powerID
         FROM
         t_user u
         WHERE
         name=#{name}
-        )=p.id
+        )
     </select>
 
 
@@ -58,7 +72,7 @@
         id=#{id}
     </insert>
 
-    <select id="selectByID" parameterType="user">
+    <select id="selectByID" resultMap="ruser">
         SELECT
         *
         FROM
