@@ -3,6 +3,7 @@ package com.zte.video.service.impl;
 import com.zte.video.dao.FavoritesContentDao;
 import com.zte.video.entity.Favorites;
 import com.zte.video.entity.FavoritesContent;
+import com.zte.video.service.FavoritesContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
