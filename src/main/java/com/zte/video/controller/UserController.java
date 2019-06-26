@@ -7,6 +7,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -43,7 +44,8 @@ public class UserController {
      *  2、该用户对应的密码是否正确
      *
      */
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/loginin")
+    @ResponseBody
     private String login(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
         BeanUtils.populate(user,req.getParameterMap());
@@ -65,6 +67,11 @@ public class UserController {
         }else {
             return "该用户名不存在";
         }
+    }
+
+    @RequestMapping("login")
+    String loginpage(){
+
     }
 
     /**

@@ -15,7 +15,7 @@
         u.id uid,
         u.pwd upwd,
         u.name uname,
-        u.registDate uregistDate
+        u.registDate uregistDate,
 
         p.power T_Power
         FROM
