@@ -30,14 +30,14 @@
 
     </select>
 
-    <select id="selectPowerByName" parameterType="user">
+    <select id="selectPowerByName" resultMap="user">
         SELECT
         p.power
         FROM t_power p
         WHERE
         (
         SELECT
-        u.id
+        u.powerID
         FROM
         t_user u
         WHERE
