@@ -5,11 +5,11 @@ import com.zte.video.entity.FavoritesContent;
 
 import java.util.List;
 
-/**
- * @Author:helloboy
- * @Date:2019-06-26 8:41
- * Description:<描述>
- */
+ /**
+  * @Author:helloboy
+  * @Date:2019-06-26 8:41
+  * Description:<描述>
+  */
 public interface FavoritesContentService {
     /**
      * 查询所有收藏夹内容

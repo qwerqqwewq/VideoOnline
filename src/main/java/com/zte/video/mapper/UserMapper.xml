@@ -29,7 +29,7 @@
 
 
 
-    <select id="insertUser" resultType="user">
+    <insert id="insertUser" parameterType="user">
         INSERT INTO
         t_user
         (pwd,name,registDate,powerID)
@@ -37,12 +37,12 @@
         (#{pwd},#{name},#{registDate},#{powerID})
         WHERE
         id=#{id}
-    </select>
+    </insert>
 
 
 
 
-    <select id="updateUser" resultType="user">
+    <update id="updateUser" parameterType="user">
         UPDATE
         t_user
         SET
@@ -50,7 +50,7 @@
         pwd=#{pwd}
         WHERE
         id=#{id}
-    </select>
+    </update>
 </mapper>
 
 
