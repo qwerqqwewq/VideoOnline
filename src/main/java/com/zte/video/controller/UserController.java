@@ -44,7 +44,7 @@ public class UserController {
      *  2、该用户对应的密码是否正确
      *
      */
-    @RequestMapping(value = "/loginin")
+    @RequestMapping(value = "/login.do")
     @ResponseBody
     private String login(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
@@ -59,19 +59,22 @@ public class UserController {
                 if (userService.findByName(name).getPower().getPower().toString()==a1&&power==a2){
                     return "main";
                 }else {
-                    return "你的权限不够";
+                    System.out.println("你的权限不够");
+                    return "login/login";
                 }
             }else {
-                return "用户名或密码不正确";
+                System.out.println("用户名或密码不正确");
+                return "login/login";
             }
         }else {
-            return "该用户名不存在";
+            System.out.println("该用户名不存在");
+            return "login/login";
         }
     }
 
-    @RequestMapping("login")
+    @RequestMapping("/login")
     String loginpage(){
-
+        return "login/login";
     }
 
     /**
