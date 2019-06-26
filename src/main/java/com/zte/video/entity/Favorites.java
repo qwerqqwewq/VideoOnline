@@ -58,8 +58,8 @@ public class Favorites implements Serializable {
         this.createDate = createDate;
     }
 
-    public Integer getUid() {
-        return id;
+    public Integer getUid(Integer id) {
+        return this.id;
     }
 
     public void setUid(Integer uid) {

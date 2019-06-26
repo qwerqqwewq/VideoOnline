@@ -120,8 +120,8 @@
         UPDATE t_video
         SET
         title = #{title},
-        picPath = #{picPath},
-        videoPath = #{videoPath},
+        picPath = IFNULL(#{picPath},picPath),
+        videoPath = IFNULL(#{videoPath},videoPath) ,
         typeId = #{type.id},
         videoTime = #{videoTime},
         intro = #{intro}

@@ -39,5 +39,5 @@ public interface FavoritesContentService {
      * @param favoritesContent
      * @return
      */
-    public int updateFavoritesContent(FavoritesContent favoritesContent);
-}
+    public int removeFavoritesContent(FavoritesContent favoritesContent);
+ }
