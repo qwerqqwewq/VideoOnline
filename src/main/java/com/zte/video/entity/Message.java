@@ -1,10 +1,11 @@
 package com.zte.video.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
- * Author:helloboy
- * Date:2019-06-25 9:16
+ * @Author:helloboy
+ * @Date:2019-06-25 9:16
  * Description:<描述>
  */
 public class Message implements Serializable {
@@ -16,6 +17,8 @@ public class Message implements Serializable {
     private String messageDate;
 
     private User user;
+
+    private Set<MessageComment> messageComments;
 
     public Message() {
     }

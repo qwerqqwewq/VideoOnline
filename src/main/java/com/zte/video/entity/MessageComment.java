@@ -1,16 +1,14 @@
 package com.zte.video.entity;
 
 /**
- * Author:helloboy
- * Date:2019-06-25 10:27
+ * @Author:helloboy
+ * @Date:2019-06-25 10:27
  * Description:<描述>
  */
 public class MessageComment {
     private Integer id;
 
     private String content;
-
-    private Message message;
 
     private User user;
 
@@ -19,9 +17,8 @@ public class MessageComment {
     public MessageComment() {
     }
 
-    public MessageComment(Integer id, Message message, String content, User user, String commentDate) {
+    public MessageComment(Integer id, String content, User user, String commentDate) {
         this.id = id;
-        this.message = message;
         this.content = content;
         this.user = user;
         this.commentDate = commentDate;
@@ -32,7 +29,6 @@ public class MessageComment {
         return "MessageComment{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", message=" + message +
                 ", user=" + user +
                 ", commentDate='" + commentDate + '\'' +
                 '}';
@@ -54,13 +50,6 @@ public class MessageComment {
         this.content = content;
     }
 
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
-    }
 
     public User getUser() {
         return user;
