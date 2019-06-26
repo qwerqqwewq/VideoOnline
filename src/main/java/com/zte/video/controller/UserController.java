@@ -7,7 +7,6 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -44,7 +43,7 @@ public class UserController {
      *  2、该用户对应的密码是否正确
      *
      */
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login")
     private String login(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
         BeanUtils.populate(user,req.getParameterMap());
@@ -74,7 +73,7 @@ public class UserController {
      * 2、判断该用户名是否已存在
      * 3、通过提交向user表中插入用户信息
      */
-    @RequestMapping(value = "/regist",method = RequestMethod.POST)
+    @RequestMapping(value = "/regist")
     private String regist(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
         User user=new User();
         BeanUtils.populate(user,req.getParameterMap());
