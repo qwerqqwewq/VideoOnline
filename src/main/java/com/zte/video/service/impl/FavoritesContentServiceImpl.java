@@ -4,12 +4,15 @@ import com.zte.video.dao.FavoritesContentDao;
 import com.zte.video.entity.Favorites;
 import com.zte.video.entity.FavoritesContent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Author:helloboy
- * Date:2019-06-26 8:54
+ * @Author:helloboy
+ * @Date:2019-06-26 8:54
  * Description:<描述>
  */
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
