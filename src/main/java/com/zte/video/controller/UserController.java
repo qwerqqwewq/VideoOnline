@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
  * Description:<描述>
  */
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
