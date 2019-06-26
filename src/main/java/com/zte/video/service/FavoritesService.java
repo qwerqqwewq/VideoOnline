@@ -40,5 +40,5 @@ public interface FavoritesService {
          * @param favorites
          * @return
          */
-        public int updateFavorites(Favorites favorites);
+        public int removeFavorites(Favorites favorites);
 }

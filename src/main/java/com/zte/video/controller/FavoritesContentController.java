@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -33,23 +34,24 @@ public class FavoritesContentController {
     /**
      * 判断是否有重复的视频
      */
-    private boolean confirmId(Integer vid){
-        if (favoritesContentService.findAllById()== vid){
-            return false;
-        }else {
-            return true;
+    private boolean confirmId(Favorites favorites,Integer vid){
+        List<FavoritesContent> favoritesContents = favoritesContentService.findAllById(favorites);
+        boolean hasSame = false;
+        for (FavoritesContent favoritesContent : favoritesContents) {
+            if (favoritesContent.getVid().equals(vid)) {
+                hasSame = true;
+                break;
+            }
         }
+        return hasSame;
     }
     @RequestMapping(value = "/insert.do")
     /**
      * 添加视频至收藏夹
      */
-    public String insertAction(HttpServletRequest req, Integer id)throws InvocationTargetException,IllegalAccessException{
+    public String insertAction(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
-        Favorites favorites = new Favorites();
-        favorites.getUid(id);
-        favoritesContent.getVid(id);
         Map map=new HashMap<>(1);
         Gson gson =new Gson();
         map.put("result", favoritesContentService.addFavoritesContent(favoritesContent));
@@ -64,21 +66,26 @@ public class FavoritesContentController {
      * 修改收藏夹中视频备注
      */
     @ResponseBody
-    public String updateAction(HttpServletRequest req,Integer id) throws InvocationTargetException, IllegalAccessException {
+    public String updateAction(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
-        Favorites favorites = new Favorites();
-        favorites.getUid(id);
-        favoritesContent.getVid(id);
         Map map=new HashMap<>(1);
         Gson gson =new Gson();
-        map.put("result", favoritesContentService.addFavoritesContent(favoritesContent));
+        map.put("result", favoritesContentService.modifyFavoritesContent(favoritesContent));
         return gson.toJson(map);
     }
 
     /**
      * 删除选中的视频
      */
-
+    @ResponseBody
+    public String deleteAction(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+        FavoritesContent favoritesContent = new FavoritesContent();
+        BeanUtils.populate(favoritesContent, req.getParameterMap());
+        Map map=new HashMap<>(1);
+        Gson gson =new Gson();
+        map.put("result", favoritesContentService.removeFavoritesContent(favoritesContent));
+        return gson.toJson(map);
+    }
 }
 
