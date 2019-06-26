@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.FavoritesDao">
+    <resultMap id="RM" type="Favorites">
+        <id property="id" column="id"/>
+        <result property="uid" column="uid" />
+        <result property="name" column="name" />
+        <result property="createDate" column="createDate" />
+        <result property="remark" column="remark" />
+        <result property="user.name" column="uname" />
+
+    </resultMap>
+    <select id="selectAll" resultMap="RM">
+        SELECT
+        b.id id,
+        b.uid uid,
+        b.name name,
+        b.createDate createDate,
+        b.remark remark,
+        (
+        select
+        c.name
+        from t_user c
+        where c.id = b.uid
+        )as uname ,
+
+        from t_favorites b
+        ORDER BY b.createDate DESC
+
+    </select>
+
+    <select id="selectByUser" parameterType="user" resultMap="RM">
+        SELECT
+        b.id id,
+        b.uid uid,
+        b.name name,
+        b.createDate createDate,
+        b.remark remark,
+        (
+        select
+        c.name
+        from t_user c
+        where c.id = b.uid
+        )as uname ,
+
+        from t_favorites b
+        WHERE c.name=#{name}
+        ORDER BY b.createDate DESC
+
+    </select>
+    <insert id="insertFavorites" parameterType="favorites">
+        insert INTO
+        t_favorites
+        (uid,name,createDate,,remark)
+        VALUES
+        {#{user.id},#{name},#(createDate),#(remark)}
+    </insert>
+    <update id="updateFavorites" parameterType="favorites">
+        UPDATE t_favorites
+        SET
+        uid=#{user.id},
+        name=#(name),
+        createDate=#(createDate),
+        remark=#{remark},
+        WHERE
+        id=#{id}
+    </update>
+    <delete id="deleteFavorites" parameterTyqpe="favorites">
+        DELETE FROM
+        t_favorites
+        WHERE id=#{id}
+    </delete>
+</mapper>
