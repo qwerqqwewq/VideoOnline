@@ -40,4 +40,4 @@ public interface FavoritesContentService {
      * @return
      */
     public int updateFavoritesContent(FavoritesContent favoritesContent);
-}
+ }

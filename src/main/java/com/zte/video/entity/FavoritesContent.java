@@ -35,7 +35,7 @@ public class FavoritesContent implements Serializable {
         this.vid = vid;
     }
 
-    public Integer getVid() {
+    public Integer getVid(Integer id) {
         return vid;
     }
 
