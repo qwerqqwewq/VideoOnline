@@ -6,7 +6,7 @@
 </head>
 <body>
     <center>
-        <form action="${pageContext.request.contextPath}/user/login" method="post">
+        <form action="${pageContext.request.contextPath}/user/login.do" method="post">
             用户名：<input name="name" type="text"/>
             密码：<input name="pwd" type="password"/>
             <br>
