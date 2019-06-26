@@ -1,5 +1,7 @@
 package com.zte.video.controller;
 
+import com.google.gson.Gson;
+import com.zte.video.entity.Power;
 import com.zte.video.entity.User;
 import com.zte.video.service.PowerService;
 import com.zte.video.service.UserService;
@@ -7,10 +9,11 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author:helloboy
@@ -45,31 +48,28 @@ public class UserController {
      *
      */
     @RequestMapping(value = "/login.do")
-    @ResponseBody
-    private String login(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
+    private String login(HttpServletRequest req,String username,String password,String power)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
+        Power power1 =new Power();
         BeanUtils.populate(user,req.getParameterMap());
-        String name=req.getParameter("name");
-        String password=req.getParameter("pwd");
-        String power=req.getParameter("power");
-        if (userService.findByName(name)!=null){
-            if (userService.findByName(name).getPwd().toString()==password){
-                String a1="普通用户";
-                String a2="管理员";
-                if (userService.findByName(name).getPower().getPower().toString()==a1&&power==a2){
+        Map map=new HashMap<>();
+        Gson gson =new Gson();
+        String a1="普通用户";
+        String a2="管理员";
+        if (userService.findByName(username)!=null){
+            if (userService.findByName(username).getPwd().toString()==password){
+                if (userService.findByName(username).getPower().getPower().toString()==a1&&power==a2){
                     return "main";
                 }else {
-                    System.out.println("你的权限不够");
-                    return "login/login";
+                    map.put("msg","你的权限不够");
                 }
             }else {
-                System.out.println("用户名或密码不正确");
-                return "login/login";
+                map.put("msg","两次密码不同");
             }
         }else {
-            System.out.println("该用户名不存在");
-            return "login/login";
+            map.put("msg","用户名或密码不正确");
         }
+        return gson.toJson(map);
     }
 
     @RequestMapping("/login")
