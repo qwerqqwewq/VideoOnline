@@ -8,7 +8,7 @@
         <result property="pwd" column="upwd"/>
         <result property="name" column="uname"/>
         <result property="registDate" column="uregistDate"/>
-        <association property="power" column="T_power" select="selectPowerByID"/>
+        <association property="power" column="power" select="selectPowerByID"/>
     </resultMap>
     <select id="selectByName" resultMap="ruser">
         SELECT
@@ -17,7 +17,7 @@
         u.name uname,
         u.registDate uregistDate,
 
-        p.power T_Power
+        p.power power
         FROM
         t_user u
         LEFT JOIN t_power p

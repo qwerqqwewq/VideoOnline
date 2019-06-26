@@ -5,7 +5,7 @@
 <mapper namespace="com.zte.video.dao.PowerDao">
     <resultMap id="rpower" type="power">
         <id property="id" column="powerID"/>
-        <result property="power" column="T_Power"/>
+        <result property="power" column="power"/>
     </resultMap>
 
     <select id="selectPowerByID" parameterType="power">

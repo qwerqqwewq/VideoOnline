@@ -50,24 +50,27 @@ public class UserController {
     @RequestMapping(value = "/login.do")
     private String login(HttpServletRequest req,String username,String password,String power)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
-        Power power1 =new Power();
+        Power power1=new Power();
         BeanUtils.populate(user,req.getParameterMap());
+        BeanUtils.populate(power,req.getParameterMap());
         Map map=new HashMap<>();
         Gson gson =new Gson();
-        String a1="普通用户";
-        String a2="管理员";
+        user.setName(username);
+        user.setPower(power1);
+        power1.setPower(power);
         if (userService.findByName(username)!=null){
-            if (userService.findByName(username).getPwd().toString()==password){
-                if (userService.findByName(username).getPower().getPower().toString()==a1&&power==a2){
-                    return "main";
+            if (userService.findByName(username).getPwd().toString().equals(password)){
+                String a="管理员";
+                if (userService.findByName(username).getPower().getPower().equals(a)) {
+                    return "insert";
                 }else {
-                    map.put("msg","你的权限不够");
+                    return "main";
                 }
             }else {
-                map.put("msg","两次密码不同");
+                map.put("msg","用户名或密码不正确");
             }
         }else {
-            map.put("msg","用户名或密码不正确");
+            map.put("msg","用户名不正确");
         }
         return gson.toJson(map);
     }
