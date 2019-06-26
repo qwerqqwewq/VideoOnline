@@ -28,7 +28,7 @@
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
                 <h3>欢迎你</h3>
-                <form action="${pageContext.request.contextPath}/user/regist.do" name="f" method="post" id="load">
+                <form action="${pageContext.request.contextPath}/user/regist.do" name="r" method="post" id="regist">
                     <div class="input_outer">
                         <span class="u_user"></span>
                         <input name="name" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入用户名">
@@ -41,7 +41,7 @@
                         <span class="us_uer"></span>
                         <input name="tpwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请再次输入密码">
                     </div>
-                    <div><a class="act-but submit" href="javascript:onClick=subbtn()" style="color: #FFFFFF">确认</a></div>
+                    <div><a class="act-but submit" href="javascript:onClick=subbtn2()" style="color: #FFFFFF">确认</a></div>
                     <div><a class="act-but submit" href="${pageContext.request.contextPath}/user/regist" style="color: #FFFFFF">返回</a></div>
                 </form>
             </div>
@@ -52,5 +52,13 @@
 <script type="text/javascript" src="js/EasePack.min.js"></script>
 <script type="text/javascript" src="js/rAF.js"></script>
 <script type="text/javascript" src="js/demo-1.js"></script>
+<script language="javascript" type="text/javascript">
+    function subbtn2()
+    {
+        document.r.submit();
+
+    }
+
+</script>
 </body>
 </html>
