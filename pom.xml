@@ -205,7 +205,7 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <configuration>
           <path>/video</path>
-          <port>8081</port>
+          <port>80</port>
         </configuration>
       </plugin>
       <!--tomcat7插件  end-->

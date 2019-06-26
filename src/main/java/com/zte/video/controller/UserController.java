@@ -48,21 +48,20 @@ public class UserController {
      *
      */
     @RequestMapping(value = "/login.do")
-    private String login(HttpServletRequest req,String username,String password,String power)throws InvocationTargetException,IllegalAccessException{
+    private String login(HttpServletRequest req,String username,String password)throws InvocationTargetException,IllegalAccessException{
         User user = new User();
-        Power power1=new Power();
+        Power power=new Power();
         BeanUtils.populate(user,req.getParameterMap());
         BeanUtils.populate(power,req.getParameterMap());
         Map map=new HashMap<>();
         Gson gson =new Gson();
         user.setName(username);
-        user.setPower(power1);
-        power1.setPower(power);
+        user.setPower(power);
         if (userService.findByName(username)!=null){
             if (userService.findByName(username).getPwd().toString().equals(password)){
                 String a="管理员";
-                if (userService.findByName(username).getPower().getPower().equals(a)) {
-                    return "insert";
+                if (userService.findByName(username).getPower().getPower().toString().equals(a)) {
+                    return "video/insert";
                 }else {
                     return "main";
                 }
