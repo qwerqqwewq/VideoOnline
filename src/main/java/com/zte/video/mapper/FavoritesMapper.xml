@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zte.video.dao.FavoritesDao">
-    <resultMap id="RM" type="Favorites">
+    <resultMap id="RM" type="favorites">
         <id property="id" column="id"/>
         <result property="uid" column="uid" />
         <result property="name" column="name" />

@@ -1,4 +1,4 @@
-@startuml
+ @startuml
 (*) -->"用户填写注册信息"
 --> "检查输入"
 If "输入合法" then
