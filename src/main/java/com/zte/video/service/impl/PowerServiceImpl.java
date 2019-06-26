@@ -25,9 +25,5 @@ public class PowerServiceImpl implements PowerService {
         return powerDao.selectPowerByID(id);
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-    public Power findPowerByName(String name){
-        return powerDao.selectPowerByName(name);
-    }
+
 }

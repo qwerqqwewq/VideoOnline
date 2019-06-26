@@ -48,4 +48,11 @@ public class UserServiceImpl implements UserService{
     public int modifyUser(User user) {
         return userDao.updateUser(user);
     }
+
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public User findPowerByName(String name){
+        return userDao.selectPowerByName(name);
+    }
 }

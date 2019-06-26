@@ -29,6 +29,13 @@ public interface UserService {
      */
     public int modifyUser(User user);
 
+    /**
+     * 根据姓名查询权限值
+     * @param name
+     * @return
+     */
+    public User findPowerByName(String name);
+
 
 
 }

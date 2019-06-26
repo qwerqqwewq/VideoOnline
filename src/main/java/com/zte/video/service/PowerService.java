@@ -16,10 +16,5 @@ public interface PowerService {
     public Power findPowerByID(Integer id);
 
 
-    /**
-     * 根据姓名查询权限值
-     * @param name
-     * @return
-     */
-    public Power findPowerByName(String name);
+
 }

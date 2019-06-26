@@ -30,6 +30,21 @@
 
     </select>
 
+    <select id="selectPowerByName" parameterType="user">
+        SELECT
+        p.power
+        FROM t_power p
+        WHERE
+        (
+        SELECT
+        u.id
+        FROM
+        t_user u
+        WHERE
+        name=#{name}
+        )=p.id
+    </select>
+
 
 
 

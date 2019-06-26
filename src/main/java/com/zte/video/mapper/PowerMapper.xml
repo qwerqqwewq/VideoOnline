@@ -15,10 +15,5 @@
     <select id="selectPowerByID" parameterType="power">
         SELECT power FROM t_power WHERE id=#{id}
     </select>
-    <select id="selectPowerByName" parameterType="power">
-        SELECT
-        p.power
-        FROM t_power p
-        WHERE u.name=#{name}
-    </select>
+
 </mapper>

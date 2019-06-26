@@ -15,6 +15,11 @@ public interface UserDao {
      **/
     public User selectByName(String name);
 
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
     public User selectByID(Integer id);
 
 
@@ -31,5 +36,12 @@ public interface UserDao {
      * @return
      */
     public int updateUser(User user);
+
+    /**
+     * 根据name查询权限值
+     * @param name
+     * @return
+     */
+    public User selectPowerByName(String name);
 
 }
