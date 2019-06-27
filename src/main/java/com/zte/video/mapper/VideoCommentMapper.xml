@@ -123,6 +123,7 @@
     public List<VideoComment> selectByVideo(Video video);-->
     <select id="selectByVideo" parameterType="video" resultMap="rsm">
         SELECT
+        b.id id,
         b.content content,
         b.commentDate commentDate,
         b.vid vid,
@@ -149,5 +150,17 @@
         b.vid = #{id}
         ORDER BY b.commentDate ASC ;
     </select>
+
+    <!-- /**
+     * 根据id删除视频评论
+     * @param id 视频评论
+     * @return
+     */
+    public int deleteById(Integer id);-->
+    <delete id="deleteById" >
+        DELETE FROM t_video_comment
+        WHERE id = #{id};
+
+    </delete>
 
 </mapper>
