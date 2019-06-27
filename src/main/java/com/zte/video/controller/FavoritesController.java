@@ -31,7 +31,7 @@ public class FavoritesController {
     String findFavoritesPageByUser(Integer uid,Model model){
     User user=new User();
     user = userService.findByID(uid);
-    List<Favorites> favorites = favoritesService.findById(uid);
+    List<Favorites> favorites = favoritesService.findById(user);
     model.addAttribute("favorites",favorites);
     return "/favorites/find";
 }
@@ -45,7 +45,7 @@ public class FavoritesController {
         favorites.setUser(user);
         Gson gson = new Gson();
         Map map=new HashMap();
-        if(favoritesService.findById(uid)==null){
+        if(favoritesService.findById(user)==null){
             map.put("result",favoritesService.addFavorites(favorites));
             map.put("msg","插入成功");
         }else

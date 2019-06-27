@@ -53,9 +53,9 @@
     <insert id="insertFavorites" parameterType="favorites">
         insert INTO
         t_favorites
-        (uid,name,createDate,,remark)
+        (id,uid,name,createDate,,remark)
         VALUES
-        {#{user.id},#{name},#(createDate),#(remark)}
+        {#{id}#{user.id},#{name},#(createDate),#(remark)}
     </insert>
     <update id="updateFavorites" parameterType="favorites">
         UPDATE t_favorites
