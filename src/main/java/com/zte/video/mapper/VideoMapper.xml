@@ -48,6 +48,7 @@
         b.uploadDate uploadDate
 
         from t_video b
+        WHERE b.title &lt;&gt; '已失效'
         ORDER BY b.uploadDate DESC
 
     </select>
@@ -77,7 +78,7 @@
 
         from t_video b
         WHERE
-        b.id = #{id};
+        b.id = #{id} AND b.title &lt;&gt; '已失效';
 
     </select>
 

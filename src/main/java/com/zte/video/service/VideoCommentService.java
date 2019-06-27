@@ -54,4 +54,11 @@ public interface VideoCommentService {
      * @return
      */
     public List<VideoComment> findByVideo(Video video);
+
+    /**
+     * 根据id删除视频评论
+     * @param id 视频评论id
+     * @return
+     */
+    public int removeById(Integer id);
 }

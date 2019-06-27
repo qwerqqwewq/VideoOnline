@@ -56,5 +56,5 @@ public class FavoritesContentServiceImpl implements FavoritesContentService {
         return favoritescontentDao.deleteFavoritesContent(favoritescontent);
     }
 
-    
+
 }

@@ -55,5 +55,11 @@ public interface VideoCommentDao {
      */
     public List<VideoComment> selectByVideo(Video video);
 
+    /**
+     * 根据id删除视频评论
+     * @param id 视频评论
+     * @return
+     */
+    public int deleteById(Integer id);
 
 }
