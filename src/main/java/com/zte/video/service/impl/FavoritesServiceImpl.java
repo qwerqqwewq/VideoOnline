@@ -4,6 +4,7 @@ import com.zte.video.dao.FavoritesDao;
 import com.zte.video.entity.Favorites;
 import com.zte.video.entity.User;
 import com.zte.video.service.FavoritesService;
+import com.zte.video.utils.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,13 +34,14 @@ public class FavoritesServiceImpl implements FavoritesService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-    public List<Favorites> findById(User user) {
-        return favoritesDao.selectById(user);
+    public List<Favorites> findById(Integer id) {
+        return favoritesDao.selectById(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addFavorites(Favorites favorites) {
+        favorites.setCreateDate(CurrentDate.getCurrentDate());
         return favoritesDao.insertFavorites(favorites);
     }
 

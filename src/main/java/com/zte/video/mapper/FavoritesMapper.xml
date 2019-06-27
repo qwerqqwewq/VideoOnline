@@ -31,7 +31,7 @@
 
     </select>
 
-    <select id="selectByUser" parameterType="user" resultMap="RM">
+    <select id="selectById" parameterType="user" resultMap="RM">
         SELECT
         b.id id,
         b.uid uid,

@@ -59,7 +59,7 @@ public class UserController {
             if (userService.findByName(user.getName()).getPwd().toString().equals(pwd)){
                 String a="管理员";
                 if (userService.findPowerByName(user.getName()).toString().equals(a)) {
-                    return "video/insert";
+                    return "video/ insert";
                 }else {
                     return "main";
                 }
