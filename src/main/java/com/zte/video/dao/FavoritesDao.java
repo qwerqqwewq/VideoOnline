@@ -21,7 +21,7 @@ public interface FavoritesDao {
      * @param user
      * @return
       */
-    public List<Favorites> selectById(Integer id);
+    public List<Favorites> selectById(User user);
     /**
      * 添加一个收藏夹
      * @param favorites

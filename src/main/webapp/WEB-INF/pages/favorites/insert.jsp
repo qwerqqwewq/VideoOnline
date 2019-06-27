@@ -8,10 +8,6 @@
 <form action="${pageContext.request.contextPath}/favorites/insert.do" method="post">
     <div>收藏夹名称</div><input name="name" /><br>
     <div>收藏夹备注</div><input name="remark"/><br>
-
-
-    <li><input name="uid" type="text"></li>
-
     <div><input type="submit" value="提交"></div>
 </form>
 </body>
