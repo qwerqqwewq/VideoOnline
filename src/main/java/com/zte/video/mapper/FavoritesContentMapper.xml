@@ -12,6 +12,8 @@
         <result property="favorites.name" column="uname" />
 
     </resultMap>
+
+
     <select id="selectAll" resultMap="RM">
         SELECT
         b.id id,
