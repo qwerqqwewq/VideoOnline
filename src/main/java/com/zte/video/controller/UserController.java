@@ -6,6 +6,7 @@ import com.zte.video.entity.User;
 import com.zte.video.service.PowerService;
 import com.zte.video.service.UserService;
 import com.zte.video.utils.CurrentDate;
+import com.zte.video.utils.MD5Util;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,8 +57,9 @@ public class UserController {
         Map map=new HashMap<>();
         Gson gson =new Gson();
         User user = userService.findByName(name);
+        String mpwd= MD5Util.MD5Encode(pwd);
         if (user!=null){
-            if (pwd.equals(user.getPwd())){
+            if (mpwd.equals(user.getPwd())){
                 String a="管理员";
                 if (user.getPower().getPower().equals(a)) {
                     model.addAttribute("user", user);
@@ -96,7 +98,8 @@ public class UserController {
             Power power = new Power();
             String name = req.getParameter("name");
             user.setName(name);
-            user.setPwd(pwd);
+            String mpwd =MD5Util.MD5Encode(pwd);
+            user.setPwd(mpwd);
             user.setRegistDate(CurrentDate.getCurrentDate());
             if (userService.findByName(name)==null) {
                 userService.addUser(user);

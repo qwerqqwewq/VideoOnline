@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="signin-form">
-                            <form action="${pageContext.request.contextPath}/user/regist.do" method="post">
+                            <form action="${pageContext.request.contextPath}/user/regist.do" method="post" name="r">
                                 <div class="form-col">
                                     <div class="form-group">
                                         <label for="signin_form">用户名</label>
