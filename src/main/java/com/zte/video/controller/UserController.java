@@ -59,9 +59,9 @@ public class UserController {
         if (user!=null){
             if (pwd.equals(user.getPwd())){
                 String a="管理员";
-                if (userService.findPowerByName(name).equals(a)) {
+                if (user.getPower().getPower().equals(a)) {
                     model.addAttribute("user", user);
-                    return "video/ insert";
+                    return "video/insert";
                 }else {
                     model.addAttribute("user", user);
                     return "main";

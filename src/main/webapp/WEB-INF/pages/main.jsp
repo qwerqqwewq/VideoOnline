@@ -5,6 +5,7 @@
 </head>
 <body>
 hello world!
+欢迎你 ${sessionScope.user}
 <div><a href="${pageContext.request.contextPath}/video/page">视频页面</a>
     <a href="${pageContext.request.contextPath}/user/login">登录页面</a>
 </div>
