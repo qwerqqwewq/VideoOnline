@@ -53,5 +53,25 @@ public class FavoritesContentTest {
             System.out.println(favoritesContent);
         }
     }
+    public static void selectAllByIdTest() {
+        Favorites favorites = new Favorites();
+        favorites.setId(2);
+        List<FavoritesContent> favoritesContents = favoritesContentDao.selectAllById(favorites);
+        for (FavoritesContent favoritesContent : favoritesContents) {
+            System.out.println(favoritesContent);
+        }
+    }
+    public static void updateTest() {
+        FavoritesContent favoritesContent = new FavoritesContent();
+        favoritesContent.setRemark("11111111");
+        favoritesContentDao.updateFavoritesContent(favoritesContent);
+    }
+    public static void deleteTest() {
+        FavoritesContent favoritesContent = new FavoritesContent();
+        Video video = new Video();
+        video.setId(3);
+        favoritesContent.setVideo(video);
+        favoritesContentDao.deleteFavoritesContent(favoritesContent);
+    }
 
 }
