@@ -3,42 +3,39 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>注册界面</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo.css" />
-    <!--必要样式-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/component.css" />
-    <!--[if IE]>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container demo-1">
-    <div class="content">
-        <div id="regist-header" class="regist-header">
-            <canvas id="regist-canvas"></canvas>
-            <div class="logo_box">
+<!--背景-->
+<div class="wel" id="background-3"></div>
+<!--左右两边云-->
+<div class="wel" id="box">
+    <div class="box-1 lefp"></div>
+    <div class="box-1">
+        <div class="righp"></div>
+    </div>
+</div>
+<!--荧光点点-->
+<div class="wel" id="git"></div>
+<div class="wel" id="from">
+    <div class="box-2 le-2">
+        <form action="${pageContext.request.contextPath}/user/regist.do" method="post">
+            <div class="flrg-1">
                 <h3>注册界面</h3>
-                <form action="${pageContext.request.contextPath}/user/regist.do" name="r" method="post" id="load">
-                    <div class="input_outer">
-                        <span class="u_user"></span>
-                        <input name="name" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入用户名">
-                    </div>
-                    <div class="input_outer">
-                        <span class="us_uer"></span>
-                        <input name="pwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请输入密码">
-                    </div>
-                    <div class="input_outer">
-                        <span class="us_uer"></span>
-                        <input name="tpwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请再次输入密码">
-                    </div>
-                    <div><a class="act-but submit" href="javascript:onClick=subbtn2()" style="color: #FFFFFF">确认</a></div>
-                    <div><a class="act-but submit" href="${pageContext.request.contextPath}/user/login" style="color: #FFFFFF">返回</a></div>
-                </form>
+                <div class="a">
+                    <input name="name"  class="in-1" placeholder="您的用户名">
+                </div>
+                <div class="a">
+                    <input name="pwd" class="in-1"  type="password" placeholder="输入密码">
+                </div>
+                <div class="a">
+                    <input name="tpwd" class="in-1" type="password" placeholder="再次确认密码">
+                </div>
+                <div><a class="a" href="javascript:onClick=subbtn2()" style="color: #FFFFFF">确认</a></div>
+                <div><a class="a" href="${pageContext.request.contextPath}/user/login" style="color: #FFFFFF">返回</a></div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript" src="js/TweenLite.min.js"></script>
