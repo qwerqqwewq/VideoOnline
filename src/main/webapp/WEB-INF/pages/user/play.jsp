@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,6 +23,24 @@
         </video>
     </div>
 </td>
+
+<li>视频评论
+    <c:forEach items="${videoComments}" var="comment">
+        <div>${comment.user.name}   时间${comment.commentDate}</div><br>
+        <div>评论了：  ${comment.content}</div>
+        <c:if test="${comment.user.id}==${sessionScope.user.id}" >
+            <a href="${pageContext.request.contextPath}/videoComment/update.do?id=${comment.id}">删除</a>
+        </c:if>
+    </c:forEach>
+</li><br>
+
+<%--发出我的评论--%>
+<form action="${pageContext.request.contextPath}/videoComment/insert.do">
+    我的评论
+    评论内容<input name="content">
+    <input type="submit" value="提交">
+
+</form>
 
 </body>
 </html>
