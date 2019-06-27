@@ -8,7 +8,6 @@ import com.zte.video.service.FavoritesService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -45,7 +44,7 @@ public class FavoritesContentController {
         }
         return hasSame;
     }
-    @RequestMapping(value = "/insert.do")
+    @RequestMapping("/insert.do")
     /**
      * 添加视频至收藏夹
      */
@@ -61,11 +60,11 @@ public class FavoritesContentController {
     String loginpage(){
         return "insert/insert";
     }
-    @RequestMapping(value = "/update.do")
+
     /**
      * 修改收藏夹中视频备注
      */
-    @ResponseBody
+    @RequestMapping("/update.do")
     public String updateAction(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
@@ -75,10 +74,11 @@ public class FavoritesContentController {
         return gson.toJson(map);
     }
 
+
     /**
      * 删除选中的视频
      */
-    @ResponseBody
+    @RequestMapping("/delete.do")
     public String deleteAction(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
@@ -86,6 +86,11 @@ public class FavoritesContentController {
         Gson gson =new Gson();
         map.put("result", favoritesContentService.updateFavoritesContent(favoritesContent));
         return gson.toJson(map);
+    }
+
+    @RequestMapping("favoritescontent")
+    String showFavoritesContent(){
+        return "FavoritesContent/find";
     }
 }
 

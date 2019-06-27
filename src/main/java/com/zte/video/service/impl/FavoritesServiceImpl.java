@@ -34,8 +34,8 @@ public class FavoritesServiceImpl implements FavoritesService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-    public List<Favorites> findById(User user) {
-        return favoritesDao.selectById(user);
+    public List<Favorites> findById(Integer id) {
+        return favoritesDao.selectById(id);
     }
 
     @Override

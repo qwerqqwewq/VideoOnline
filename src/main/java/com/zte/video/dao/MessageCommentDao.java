@@ -33,6 +33,7 @@ public interface MessageCommentDao {
     public MessageComment deleteMessageCommentByID(Integer id);
     /**
      * 清空
+     * @return
      */
     public int deleteAllMessageComment();
 }

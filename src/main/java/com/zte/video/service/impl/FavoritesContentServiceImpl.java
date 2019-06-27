@@ -52,7 +52,7 @@ public class FavoritesContentServiceImpl implements FavoritesContentService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-    public int updateFavoritesContent(FavoritesContent favoritescontent) {
+    public int removeFavoritesContent(FavoritesContent favoritescontent) {
         return favoritescontentDao.deleteFavoritesContent(favoritescontent);
     }
 
