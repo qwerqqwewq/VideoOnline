@@ -42,6 +42,4 @@ public interface UserDao {
      * @param name
      * @return
      */
-    public User selectPowerByName(String name);
-
 }
