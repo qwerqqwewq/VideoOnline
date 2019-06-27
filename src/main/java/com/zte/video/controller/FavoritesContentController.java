@@ -84,7 +84,7 @@ public class FavoritesContentController {
         BeanUtils.populate(favoritesContent, req.getParameterMap());
         Map map=new HashMap<>(1);
         Gson gson =new Gson();
-        map.put("result", favoritesContentService.removeFavoritesContent(favoritesContent));
+        map.put("result", favoritesContentService.updateFavoritesContent(favoritesContent));
         return gson.toJson(map);
     }
 }

@@ -4,6 +4,7 @@ import com.zte.video.dao.FavoritesContentDao;
 import com.zte.video.entity.Favorites;
 import com.zte.video.entity.FavoritesContent;
 import com.zte.video.service.FavoritesContentService;
+import com.zte.video.utils.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +40,7 @@ public class FavoritesContentServiceImpl implements FavoritesContentService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addFavoritesContent(FavoritesContent favoritescontent) {
+        favoritescontent.setInserDate(CurrentDate.getCurrentDate());
         return favoritescontentDao.insertFavoritesContent(favoritescontent);
     }
 
@@ -53,7 +55,5 @@ public class FavoritesContentServiceImpl implements FavoritesContentService {
     public int updateFavoritesContent(FavoritesContent favoritescontent) {
         return favoritescontentDao.deleteFavoritesContent(favoritescontent);
     }
-
-
 
 }
