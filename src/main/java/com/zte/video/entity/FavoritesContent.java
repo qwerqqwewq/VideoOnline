@@ -11,36 +11,39 @@ public class FavoritesContent implements Serializable {
 
     private Integer id;
 
-    private Integer fid;
+    private Favorites favorites;
 
-    private Integer vid;
+    private Video video;
 
     private String remark;
 
-    private String inserDate;
+    private String insertDate;
 
-    public Integer getFId() {
-        return fid;
+    public FavoritesContent() {
     }
 
-    public void setFid(Integer fid) {
-        this.fid = fid;
-    }
-
-    public Integer getid() {
+    public Integer getId() {
         return id;
     }
 
-    public void setVid(Integer vid) {
-        this.vid = vid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getVid() {
-        return vid;
+    public Favorites getFavorites() {
+        return favorites;
     }
 
-    public void setId(Integer vid) {
-        this.vid = vid;
+    public void setFavorites(Favorites favorites) {
+        this.favorites = favorites;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
     }
 
     public String getRemark() {
@@ -51,22 +54,11 @@ public class FavoritesContent implements Serializable {
         this.remark = remark;
     }
 
-    public String getInserDate() {
-        return inserDate;
+    public String getInsertDate() {
+        return insertDate;
     }
 
-    public void setInserDate(String inserDate) {
-        this.inserDate = inserDate;
-    }
-
-    public FavoritesContent() {
-    }
-
-    public FavoritesContent(Integer id, Integer vid, Integer fid, Integer uid, String remark, String inserDate) {
-        this.id = id;
-        this.remark = remark;
-        this.vid = vid;
-        this.fid = fid;
-        this.inserDate = inserDate;
+    public void setInsertDate(String insertDate) {
+        this.insertDate = insertDate;
     }
 }
