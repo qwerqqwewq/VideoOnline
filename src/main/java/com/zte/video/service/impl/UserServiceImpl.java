@@ -45,9 +45,6 @@ public class UserServiceImpl implements UserService{
         return userDao.updateUser(user);
     }
 
-
-
-
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public User findByID(Integer id){
