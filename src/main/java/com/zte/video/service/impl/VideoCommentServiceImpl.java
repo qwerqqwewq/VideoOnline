@@ -62,4 +62,9 @@ public class VideoCommentServiceImpl implements VideoCommentService {
     public List<VideoComment> findByVideo(Video video) {
         return videoCommentDao.selectByVideo(video);
     }
+
+    @Override
+    public int removeById(Integer id) {
+        return videoCommentDao.deleteById(id);
+    }
 }

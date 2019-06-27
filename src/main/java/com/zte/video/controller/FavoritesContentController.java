@@ -37,7 +37,7 @@ public class FavoritesContentController {
         List<FavoritesContent> favoritesContents = favoritesContentService.findAllById(favorites);
         boolean hasSame = false;
         for (FavoritesContent favoritesContent : favoritesContents) {
-            if (favoritesContent.getVid().equals(vid)) {
+            if (favoritesContent.getVideo().getId().equals(vid)) {
                 hasSame = true;
                 break;
             }

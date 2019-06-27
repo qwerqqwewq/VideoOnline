@@ -25,8 +25,8 @@
         <module name="video" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="video" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="video" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

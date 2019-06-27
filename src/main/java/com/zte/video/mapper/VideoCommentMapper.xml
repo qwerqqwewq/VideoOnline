@@ -21,6 +21,7 @@
     public List<VideoComment> selectAll();-->
     <select id="selectAll" resultMap="rsm">
         SELECT
+        b.id id,
         b.content content,
         b.commentDate commentDate,
         b.vid vid,
@@ -86,6 +87,7 @@
     public List<VideoComment> selectByUser(User user);-->
     <select id="selectByUser" resultMap="rsm" parameterType="user">
         SELECT
+        b.id id,
         b.content content,
         b.commentDate commentDate,
         b.vid vid,
