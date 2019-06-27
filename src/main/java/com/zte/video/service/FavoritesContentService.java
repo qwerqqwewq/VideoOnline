@@ -16,6 +16,7 @@ public interface FavoritesContentService {
      * @return
      */
     public List<FavoritesContent> findAll();
+
     /**
      * 根据收藏夹查询内容
      * @param favorites
@@ -39,5 +40,5 @@ public interface FavoritesContentService {
      * @param favoritesContent
      * @return
      */
-    public int updateFavoritesContent(FavoritesContent favoritesContent);
+    public int removeFavoritesContent(FavoritesContent favoritesContent);
  }

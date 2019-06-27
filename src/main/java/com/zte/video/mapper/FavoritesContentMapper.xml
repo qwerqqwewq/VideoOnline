@@ -5,29 +5,31 @@
 <mapper namespace="com.zte.video.dao.FavoritesContentDao">
     <resultMap id="RM" type="FavoritesContent">
         <id property="id" column="id"/>
-        <result property="vid" column="vid" />
-        <result property="fid" column="fid" />
-        <result property="createDate" column="createDate" />
+        <result property="video.id" column="vid" />
+        <result property="favorites.id" column="fid" />
+        <result property="insertDate" column="insertDate" />
         <result property="remark" column="remark" />
         <result property="favorites.name" column="uname" />
 
     </resultMap>
+
+
     <select id="selectAll" resultMap="RM">
         SELECT
         b.id id,
-        b.uid uid,
+        b.vid vid,
         b.fid fid,
-        b.createDate createDate,
+        b.insertDate insertDate,
         b.remark remark,
         (
         select
         c.name
         from t_favorites c
         where c.id = b.fid
-        )as uname ,
+        )as uname
 
         from t_favorites_content b
-        ORDER BY b.createDate DESC
+        ORDER BY b.insertDate DESC
 
     </select>
     <select id="selectByFavorites" parameterType="favorites" resultMap="RM">
@@ -35,14 +37,14 @@
         b.id id,
         b.uid uid,
         b.fid fid,
-        b.createDate createDate,
+        b.insertDate insertDate,
         b.remark remark,
         (
         select
         c.name
         from t_favorites c
         where c.id = b.fid
-        )as uname ,
+        )as uname
 
         from t_favorites_content b
         where c.name=#{name}
@@ -51,17 +53,14 @@
     <insert id="insertFavoritesContent" parameterType="FavoritesContent">
         insert INTO
         t_favorites_content
-        (vid,fid,createDate,,remark)
+        (vid,fid,insertDate,remark)
         VALUES
-        {#{video.id},#{favorites.id},#(createDate),#(remark)}
+        (#{video.id},#{favorites.id},#{insertDate},#{remark})
     </insert>
     <update id="updateFavoritescontent" parameterType="FavoritesContent">
         UPDATE t_favorites_content
         SET
-        vid=#{video.id},
-        fid=#(favorites.id),
-        createDate=#(createDate),
-        remark=#{remark},
+        remark=#{remark}
         WHERE
         id=#{id}
     </update>

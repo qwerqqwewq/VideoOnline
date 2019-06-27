@@ -40,7 +40,7 @@ public class FavoritesContentServiceImpl implements FavoritesContentService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int addFavoritesContent(FavoritesContent favoritescontent) {
-        favoritescontent.setInserDate(CurrentDate.getCurrentDate());
+        favoritescontent.setInsertDate(CurrentDate.getCurrentDate());
         return favoritescontentDao.insertFavoritesContent(favoritescontent);
     }
 
@@ -56,4 +56,5 @@ public class FavoritesContentServiceImpl implements FavoritesContentService {
         return favoritescontentDao.deleteFavoritesContent(favoritescontent);
     }
 
+    
 }

@@ -1,50 +1,124 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8" />
+<head lang="en">
+    <!-- meta data -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!--font-family-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+
+    <!-- title of site -->
     <title>注册界面</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo.css" />
-    <!--必要样式-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/component.css" />
-    <!--[if IE]>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/html5.js"></script>
+
+    <!-- For favicon png -->
+    <link rel="shortcut icon" type="image/icon" href="${pageContext.request.contextPath}/img/demo-1-bg.jpg"/>
+
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+
+    <!--animate.css-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+
+    <!--bootstrap.min.css-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootsnav.css" >
+
+    <!--style.css-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
+    <!--responsive.css-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
-<div class="container demo-1">
-    <div class="content">
-        <div id="regist-header" class="regist-header">
-            <canvas id="regist-canvas"></canvas>
-            <div class="logo_box">
-                <h3>注册界面</h3>
-                <form action="${pageContext.request.contextPath}/user/regist.do" name="r" method="post" id="load">
-                    <div class="input_outer">
-                        <span class="u_user"></span>
-                        <input name="name" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入用户名">
+<section class="signin signup popup-in">
+    <div class="container">
+        <div class="sign-content popup-in-content">
+            <div class="popup-in-txt">
+                <h2>注册界面</h2>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="signin-form">
+                            <form action="${pageContext.request.contextPath}/user/regist.do" method="post" name="r">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="signin_form">用户名</label>
+                                        <input name="name" class="form-control" type="text" placeholder="请输入用户名">
+                                    </div>
+                                </div>
+                                <div class="form-coll">
+                                    <div class="form-group">
+                                        <label for="signin_form"></label>
+                                        <input readonly="readonly" value="只能为普通用户哦">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="signin_form">密码</label>
+                                    <input name="pwd" class="form-control" type="password" placeholder="请输入密码">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signin_form">密码确认</label>
+                                    <input name="tpwd" class="form-control" type="password" placeholder="请再次输入密码">
+                                </div>
+                            </form>
+
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="signin-footer">
+                                        <a href="javascript:onClick=subbtn2()">确认</a>
+                                        <a href="${pageContext.request.contextPath}/user/login">返回</a>
+                                    </div><!--/.signin-footer -->
+                                </div><!--/.col-->
+                            </div>
+
+
+                        </div>
                     </div>
-                    <div class="input_outer">
-                        <span class="us_uer"></span>
-                        <input name="pwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请输入密码">
-                    </div>
-                    <div class="input_outer">
-                        <span class="us_uer"></span>
-                        <input name="tpwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请再次输入密码">
-                    </div>
-                    <div><a class="act-but submit" href="javascript:onClick=subbtn2()" style="color: #FFFFFF">确认</a></div>
-                    <div><a class="act-but submit" href="${pageContext.request.contextPath}/user/login" style="color: #FFFFFF">返回</a></div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script type="text/javascript" src="js/TweenLite.min.js"></script>
-<script type="text/javascript" src="js/EasePack.min.js"></script>
-<script type="text/javascript" src="js/rAF.js"></script>
-<script type="text/javascript" src="js/demo-1.js"></script>
+</section>
+<!--footer copyright start -->
+<footer class="footer-copyright">
+    <div id="scroll-Top">
+        <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+    </div><!--/.scroll-Top-->
+
+</footer><!--/.hm-footer-copyright-->
+<script src="assets/js/jquery.js"></script>
+
+<!--modernizr.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="assets/js/bootsnav.js"></script>
+
+<!-- jquery.sticky.js -->
+<script src="assets/js/jquery.sticky.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+
+<!--Custom JS-->
+<script src="assets/js/custom.js"></script>
 <script language="javascript" type="text/javascript">
     function subbtn2()
     {
@@ -53,5 +127,6 @@
     }
 
 </script>
+
 </body>
 </html>

@@ -25,39 +25,19 @@
         u.name uname,
         u.registDate uregistDate,
         (
-        SELECT c.power FROM
+        SELECT
+        c.power FROM
         t_power c
         WHERE
-        c.id=(
-        SELECT
-        powerID
-        FROM
-        t_user
-        WHERE
-        name=#{name}
-         )
-          )AS power
+        c.id=u.powerId
+        )AS cpower
         FROM t_user u
         WHERE u.name=#{name}
 
 
     </select>
 
-    <select id="selectPowerByName" resultMap="ruser">
-        SELECT
-        c.power cpower
-        FROM t_power c
-        WHERE
-        c.id=
-        (
-        SELECT
-        u.powerID
-        FROM
-        t_user u
-        WHERE
-        name=#{name}
-        )
-    </select>
+
 
 
 
