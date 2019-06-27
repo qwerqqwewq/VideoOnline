@@ -64,7 +64,7 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        String password = "starry123456";
+        String password = "123";
         String encoded = MD5Encode(password);
         System.out.println(password);
         System.out.println(encoded);

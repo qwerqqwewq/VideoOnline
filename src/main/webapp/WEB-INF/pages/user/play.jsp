@@ -1,10 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <html>
 <head>
     <title></title>
 </head>
 <body>
+
+权限${sessionScope.user.power.power}
+用户id ${sessionScope.user.id}
+
 <li>视频界面
     <div>视频标题  ${video.title}</div><br>
     <div>视频封面  </div><img src="${pageContext.request.contextPath}/${video.picPath}"/>
@@ -14,6 +18,7 @@
     <div>上传时间  ${video.uploadDate}</div>
     <div>视频类型  ${video.type.type}</div>
 </li><br>
+
 
 
 <td style="text-align: center">
@@ -26,7 +31,8 @@
 
 <li>视频评论
     <c:forEach items="${videoComments}" var="comment">
-        <div>${comment.user.name}   时间${comment.commentDate}</div><br>
+        <div>用户名：${comment.user.name}</div>
+        <div>评论时间${comment.commentDate}</div><br>
         <div>评论了：  ${comment.content}</div>
         <c:if test="${comment.user.id}==${sessionScope.user.id}" >
             <a href="${pageContext.request.contextPath}/videoComment/update.do?id=${comment.id}">删除</a>
@@ -39,7 +45,7 @@
     我的评论
     评论内容<input name="content">
     <input type="submit" value="提交">
-
+    <input name="vid" value="${video.id}" type="hidden">
 </form>
 
 </body>

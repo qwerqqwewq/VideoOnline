@@ -5,6 +5,9 @@
     <title>视频列表</title>
 </head>
 <body>
+
+权限${sessionScope.user.power.power}
+
 <c:forEach items="${videos}" var="video" varStatus="vs">
     <li>${vs.count}
         <div>视频标题  ${video.title}</div><br>
