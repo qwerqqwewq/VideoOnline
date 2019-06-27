@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -16,19 +15,13 @@
     <![endif]-->
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/user/regist.do" method="post">
-    <div>用户名</div><input name="name" /><br>
-    <div>密码</div><input name="pwd"><br>
-    <div>确认密码</div><input name="tpwd"><br>
-    <div><input type="submit" value="提交"></div>
-</form>
 <div class="container demo-1">
     <div class="content">
-        <div id="large-header" class="large-header">
-            <canvas id="demo-canvas"></canvas>
+        <div id="regist-header" class="regist-header">
+            <canvas id="regist-canvas"></canvas>
             <div class="logo_box">
-                <h3>欢迎你</h3>
-                <form action="${pageContext.request.contextPath}/user/regist.do" name="r" method="post" id="regist">
+                <h3>注册界面</h3>
+                <form action="${pageContext.request.contextPath}/user/regist.do" name="r" method="post" id="load">
                     <div class="input_outer">
                         <span class="u_user"></span>
                         <input name="name" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入用户名">
@@ -42,7 +35,7 @@
                         <input name="tpwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请再次输入密码">
                     </div>
                     <div><a class="act-but submit" href="javascript:onClick=subbtn2()" style="color: #FFFFFF">确认</a></div>
-                    <div><a class="act-but submit" href="${pageContext.request.contextPath}/user/regist" style="color: #FFFFFF">返回</a></div>
+                    <div><a class="act-but submit" href="${pageContext.request.contextPath}/user/login" style="color: #FFFFFF">返回</a></div>
                 </form>
             </div>
         </div>

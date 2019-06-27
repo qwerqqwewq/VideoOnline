@@ -26,7 +26,6 @@ public class FavoritesController {
 @RequestMapping("/findByUser")
     String findFavoritesPageByUser(HttpServletRequest req,Integer uid,Model model){
     User user=new User();
-    user = userService.findById();
     List<Favorites> favorites = favoritesService.findById(user);
     model.addAttribute("favorites",favorites);
     return "/favorites/findByUser";
