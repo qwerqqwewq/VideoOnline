@@ -55,14 +55,13 @@
         t_favorites
         (id,uid,name,createDate,,remark)
         VALUES
-        {#{id}#{user.id},#{name},#(createDate),#(remark)}
-    </insert>
+        (#{id},#{user.id},#{name},#{createDate},#{remark})    </insert>
     <update id="updateFavorites" parameterType="favorites">
         UPDATE t_favorites
         SET
         uid=#{user.id},
-        name=#(name),
-        createDate=#(createDate),
+        name=#{name},
+        createDate=#{createDate)},
         remark=#{remark},
         WHERE
         id=#{id}
