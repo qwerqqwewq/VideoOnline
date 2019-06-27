@@ -9,7 +9,9 @@ import com.zte.video.utils.CurrentDate;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -23,6 +25,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/user")
+@SessionAttributes("user")
 public class UserController {
 
     @Autowired
@@ -49,18 +52,18 @@ public class UserController {
      *
      */
     @RequestMapping( "/login.do")
-    String login(HttpServletRequest req,String name,String pwd)throws InvocationTargetException,IllegalAccessException{
+    String login(HttpServletRequest req,String name,String pwd,Model model)throws InvocationTargetException,IllegalAccessException{
         Map map=new HashMap<>();
         Gson gson =new Gson();
-        User user = new User();
-        BeanUtils.populate(user,req.getParameterMap());
-        user.setName(name);
-        if (userService.findByName(name)!=null){
-            if (userService.findByName(user.getName()).getPwd().toString().equals(pwd)){
+        User user = userService.findByName(name);
+        if (user!=null){
+            if (pwd.equals(user.getPwd())){
                 String a="管理员";
-                if (userService.findPowerByName(user.getName()).toString().equals(a)) {
-                    return "video/ insert";
+                if (user.getPower().getPower().equals(a)) {
+                    model.addAttribute("user", user);
+                    return "video/insert";
                 }else {
+                    model.addAttribute("user", user);
                     return "main";
                 }
             }else {

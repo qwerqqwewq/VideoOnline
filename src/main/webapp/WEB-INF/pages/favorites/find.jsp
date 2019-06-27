@@ -4,7 +4,6 @@
     <title>查询收藏夹</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/favorites/findByUser" method="post">
     <c:forEach items="${favorites}" var="favorites" varStatus="vs">
         <li>${vs.count}
             <div>收藏夹名称  ${favorites.name}</div><br>
@@ -14,6 +13,5 @@
         </li><br>
 
     </c:forEach>
-</form>
 </body>
 </html>

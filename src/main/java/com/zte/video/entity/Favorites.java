@@ -19,20 +19,43 @@ public class Favorites implements Serializable {
 
     private String createDate;
 
-    public Favorites(){}
-    public Favorites(Integer id,String name,String   createDate,Integer uid,String remark,User user){
-        this.name=name;
-        this.createDate=createDate;
-        this.id=id;
-        this.remark=remark;
-        this.user=user;
+    public Favorites() {
     }
 
-
-    public void setUser(User user) {
+    public Favorites(String createDate, Integer id, String name, String remark, User user) {
+        this.createDate = createDate;
+        this.id = id;
+        this.name = name;
+        this.remark = remark;
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "Favorites{" +
+                "createDate='" + createDate + '\'' +
+                ", user=" + user +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -50,30 +73,11 @@ public class Favorites implements Serializable {
         this.remark = remark;
     }
 
-    public String getCreateDate() {
-        return createDate;
+    public User getUser() {
+        return user;
     }
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
-    public Integer getUid(Integer id) {
-        return this.id;
-    }
-
-    public void setUid(Integer uid) {
-        this.id = uid;
-    }
-
-    @Override
-    public String toString() {
-        return "Favorites{" +
-                "user=" + user +
-                ", uid=" + id +
-                ", name='" + name + '\'' +
-                ", remark='" + remark + '\'' +
-                ", createDate='" + createDate + '\'' +
-                '}';
+    public void setUser(User user) {
+        this.user = user;
     }
 }

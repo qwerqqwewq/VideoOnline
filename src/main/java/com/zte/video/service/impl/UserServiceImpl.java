@@ -46,11 +46,7 @@ public class UserServiceImpl implements UserService{
     }
 
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-    public User findPowerByName(String name){
-        return userDao.selectPowerByName(name);
-    }
+
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)

@@ -22,7 +22,7 @@ public interface FavoritesService {
          * @param user
          * @return
          */
-        public List<Favorites> findById(Integer id);
+        public List<Favorites> findById(User user);
         /**
          * 添加一个收藏夹
          * @param favorites
