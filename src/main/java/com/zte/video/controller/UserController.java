@@ -61,10 +61,10 @@ public class UserController {
                 String a="管理员";
                 if (user.getPower().getPower().equals(a)) {
                     model.addAttribute("user", user);
-                    return "video/insert";
+                    return "main";
                 }else {
                     model.addAttribute("user", user);
-                    return "main";
+                    return "video/page";
                 }
             }else {
                 map.put("msg","用户名或密码不正确");
