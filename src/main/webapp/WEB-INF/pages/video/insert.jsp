@@ -7,8 +7,7 @@
 <body>
 <form action="${pageContext.request.contextPath}/video/insert.do" method="post" enctype="multipart/form-data">
     <div>标题</div><input name="title" /><br>
-    <div>视频路径</div><input type="file" name="v_video"><br>
-    <div>视频时长</div><input name="videoTime"><br>
+    <div>选择文件</div><input type="file" name="v_video"><br>
     <div>简介</div><input name="intro"><br>
     <div>类型</div><br>
 

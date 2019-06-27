@@ -10,10 +10,15 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +40,7 @@ public class VideoController {
 
     @RequestMapping("/insert.do")
     @ResponseBody
-    String insertVideo(HttpServletRequest req, Integer typeId) throws Exception {
+    public String insertVideo(HttpServletRequest req, Integer typeId) throws Exception {
         Video video = new Video();
         Gson gson = new Gson();
         Map map = null;
@@ -51,9 +56,37 @@ public class VideoController {
         return gson.toJson(map);
     }
 
+    @RequestMapping("/img/{id}")
+    @ResponseBody
+    public String requestImg(@PathVariable("id") Integer id
+    ,HttpServletResponse response) throws IOException {
+        String imgFile = videoService.findById(id).getPicPath();
+        FileInputStream fileIs=null;
+        try {
+            fileIs = new FileInputStream(imgFile);
+        } catch (Exception e) {
+            return "fail";
+        }
+        //得到文件大小
+        int i=fileIs.available();
+        byte[] data=new byte[i];
+        //读数据
+        fileIs.read(data);
+        //设置返回的文件类型
+        response.setContentType("image/*");
+        //得到向客户端输出二进制数据的对象
+        OutputStream outStream=response.getOutputStream();
+        //输出数据
+        outStream.write(data);
+        outStream.flush();
+        outStream.close();
+        fileIs.close();
+        return "ok";
+    }
+
     @RequestMapping("/update.do")
     @ResponseBody
-    String updateVideo(HttpServletRequest req, Integer typeId) throws InvocationTargetException, IllegalAccessException {
+    public String updateVideo(HttpServletRequest req, Integer typeId) throws InvocationTargetException, IllegalAccessException {
         Video video = new Video();
         BeanUtils.populate(video, req.getParameterMap());
         Type type = new Type();
