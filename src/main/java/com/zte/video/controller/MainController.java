@@ -1,7 +1,14 @@
 package com.zte.video.controller;
 
+import com.zte.video.entity.Video;
+import com.zte.video.service.VideoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Author:helloboy
@@ -10,9 +17,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class MainController {
+    @Autowired
+    private VideoService videoService;
+
 
     @RequestMapping("/main")
     String MainPage() {
         return "main";
     }
+
+    @RequestMapping("/play/{id}")
+    public String playAction(@PathVariable("id") Integer id,
+                             HttpServletResponse response,Model model) {
+        Video video = videoService.findById(id);
+        String videoUrl = video.getVideoPath();
+        model.addAttribute("video", video);
+        model.addAttribute("videoUrl", videoUrl);
+        return "user/play";
+    }
+
 }

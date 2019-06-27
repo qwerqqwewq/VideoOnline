@@ -179,15 +179,16 @@ public class MediaUtils {
                     if (item.getSize() > 500 * 1024 * 1024) {
                         map.put("msg", "上传失败！上传的文件过大，系统最大允许500M");
                         System.out.println("上传失败！上传的文件过大，系统最大允许500M");
+                        break;
                     }
                     //设置转换为flv格式后文件的保存路径
-                    String codcFilePath = basePath + "/" + serialName + ".flv";
+                    String codcFilePath = basePath + "/" + serialName + ".mp4";
                     //设置上传视频截图的保存路径
                     String mediaPicPath = basePath + "/images" +File.separator+ serialName + ".jpg";
 
-                    //设置视频路径
-                    video.setVideoPath(new File(codcFilePath).getPath());
-                    video.setPicPath(new File(mediaPicPath).getPath());
+                    //设置视频路径，视频路径为相对路径
+                    video.setVideoPath("videos/"+serialName + ".mp4");
+                    video.setPicPath("videos/images/" + serialName + ".jpg");
 
                     // 获取配置的转换工具（ffmpeg.exe）的存放路径
                     String ffmpegPath = request.getServletContext().getRealPath("/tools/ffmpeg.exe");
