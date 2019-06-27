@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -29,7 +30,7 @@ public class VideoCommentController {
 
     @RequestMapping("/insert.do")
     @ResponseBody
-    public String insertAction(HttpServletRequest req,Integer uid,Integer vid) throws InvocationTargetException, IllegalAccessException {
+    public String insertAction(HttpServletRequest req,@SessionAttribute("user") User user,Integer vid) throws InvocationTargetException, IllegalAccessException {
         //配置基础内容
         VideoComment videoComment = new VideoComment();
         BeanUtils.populate(videoComment,req.getParameterMap());
@@ -38,8 +39,6 @@ public class VideoCommentController {
         video.setId(vid);
         videoComment.setVideo(video);
         //配置对应评论人
-        User user = new User();
-        user.setId(uid);
         videoComment.setUser(user);
         //配置json信息
         Gson gson = new Gson();
@@ -51,17 +50,17 @@ public class VideoCommentController {
 
     @RequestMapping("/update.do")
     @ResponseBody
-    public String updateAction(HttpServletRequest req,Integer uid,Integer vid) throws InvocationTargetException, IllegalAccessException {
+    public String updateAction(HttpServletRequest req,@SessionAttribute("user") User user,Integer vid) throws InvocationTargetException, IllegalAccessException {
         //配置基础内容
         VideoComment videoComment = new VideoComment();
         BeanUtils.populate(videoComment,req.getParameterMap());
         //配置对应视频
         Video video = new Video();
+        System.out.println(vid);
+        System.out.println(user.getId());
         video.setId(vid);
         videoComment.setVideo(video);
         //配置对应评论人
-        User user = new User();
-        user.setId(uid);
         videoComment.setUser(user);
         //配置json信息
         Gson gson = new Gson();

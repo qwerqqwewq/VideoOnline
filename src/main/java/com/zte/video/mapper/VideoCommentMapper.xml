@@ -7,7 +7,7 @@
     <resultMap id="rsm" type="videoComment">
         <id property="id" column="id" />
         <result property="content" column="content" />
-        <result property="commentDate" column="" />
+        <result property="commentDate" column="commentDate" />
         <result property="video.id" column="vid" />
         <result property="video.title" column="vname" />
         <result property="user.id" column="uid" />
@@ -111,7 +111,7 @@
         from
         t_video_comment b
         WHERE
-        b.uid = #{user.id}
+        b.uid = #{id}
         ORDER BY b.commentDate ASC ;
     </select>
 
@@ -146,7 +146,7 @@
         from
         t_video_comment b
         WHERE
-        b.vid = #{video.id}
+        b.vid = #{id}
         ORDER BY b.commentDate ASC ;
     </select>
 
