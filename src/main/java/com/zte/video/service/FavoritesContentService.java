@@ -16,6 +16,7 @@ public interface FavoritesContentService {
      * @return
      */
     public List<FavoritesContent> findAll();
+
     /**
      * 根据收藏夹查询内容
      * @param favorites

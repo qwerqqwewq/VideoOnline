@@ -28,6 +28,9 @@ public class FavoritesContentTest {
         //测试选择所有，已成功
         //selectAllTest();
 
+
+        
+
     }
 
     public static void insertTest() {
