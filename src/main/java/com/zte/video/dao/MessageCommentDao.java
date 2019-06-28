@@ -20,10 +20,10 @@ public interface MessageCommentDao {
 
     /**
      * 查询某个留言下的所有的回复
-     * @param message
+     * @param id
      * @return
      */
-    public List<MessageComment> selectAllByID(Message message);
+    public List<MessageComment> selectAllByMessageID(Integer id);
 
     /**
      * 删除某条留言下的某个回复

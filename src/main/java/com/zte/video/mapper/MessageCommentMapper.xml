@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.video.dao.MessageCommentDao">
+    <resultMap id="rmessage" type="messagecomment">
+        <id property="id" column="mid"/>
+        <result property="content" column="mccontent"/>
+        <result property="commentDate" column="mcDate"/>
+        <result property="message.id" column="mid/"/>
+        <result property="user.id" column="uid"/>
+    </resultMap>
+
+
+</mapper>
