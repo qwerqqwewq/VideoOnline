@@ -10,7 +10,5 @@
 <div><input type="submit" value="提交"></div>
 <a href="${pageContext.request.contextPath}/favorites/update">更新收藏夹</a><br>
 <a href="${pageContext.request.contextPath}/favorites/delete">删除收藏夹</a><br>
-<li>输入删除id<input name="fid" type="text"></li>
-<div><input type="submit" value="提交"></div>
 </body>
 </html>
