@@ -9,37 +9,15 @@
         <result property="favorites.id" column="fid" />
         <result property="insertDate" column="insertDate" />
         <result property="remark" column="remark" />
-        <result property="favorites.name" column="uname" />
+        <result property="favorites.name" column="fname" />
 
     </resultMap>
 
 
-    <select id="selectAll" resultType="video" parameterType="favorites">
---         SELECT
---         b.id id,
---         b.vid vid,
---         b.fid fid,
---         b.insertDate insertDate,
---         b.remark remark,
---         (
---         select
---         c.name
---         from t_favorites c
---         where c.id = b.fid
---         )as uname
---
---         from t_favorites_content b
---         ORDER BY b.insertDate DESC
-            select v.* from
-            t_favorites f,t_favorites_content fc,t_video v
-            where f.id=fc.fid and fc.vid=v.id and f.uid=#{uid}
-            and f.id=#{id};
-
-    </select>
-    <select id="selectByFavorites" parameterType="favorites" resultMap="RM">
-                SELECT
+    <select id="selectAll" resultMap="RM">
+        SELECT
         b.id id,
-        b.uid uid,
+        b.vid vid,
         b.fid fid,
         b.insertDate insertDate,
         b.remark remark,
@@ -48,11 +26,28 @@
         c.name
         from t_favorites c
         where c.id = b.fid
-        )as uname
+        )as fname
+
+        from t_favorites_content b
+        ORDER BY b.insertDate DESC
+    </select>
+    <select id="selectByFavorites" parameterType="favorites" resultMap="RM">
+                SELECT
+        b.id id,
+        b.vid vid,
+        b.fid fid,
+        b.insertDate insertDate,
+        b.remark remark,
+        (
+        select
+        c.name
+        from t_favorites c
+        where c.id = b.fid
+        )as fname
 
         from t_favorites_content b
         where c.name=#{name}
-        ORDER BY b.createDate DESC
+        ORDER BY b.insertDate DESC
     </select>
     <insert id="insertFavoritesContent" parameterType="FavoritesContent">
         insert INTO
