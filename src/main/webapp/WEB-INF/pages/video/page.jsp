@@ -18,7 +18,10 @@
 </head>
 
 <body>
+${sessionScope.user.power.power}<br>
+<c:if test="${sessionScope.user.power.power==\"管理员\"}">
 <a href="${pageContext.request.contextPath}/video/insertVideo">插入视频</a><br>
+</c:if>
 <a href="${pageContext.request.contextPath}/video/findVideo">查看所有视频</a><br>
 <script type="text/javascript" src="js/TweenLite.min.js"></script>
 <script type="text/javascript" src="js/EasePack.min.js"></script>

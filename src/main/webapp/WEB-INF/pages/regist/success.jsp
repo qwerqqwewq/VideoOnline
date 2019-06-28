@@ -4,7 +4,7 @@
 <body>
 <h2>注册成功 点击下方按钮跳回登录界面</h2>
 <center>
-    <a   href="${pageContext.request.contextPath}/user/login">返回</a>
+    <a   href="${pageContext.request.contextPath}">返回</a>
 </center>
 </body>
 </html>
