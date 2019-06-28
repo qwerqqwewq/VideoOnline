@@ -28,8 +28,11 @@ public class FavoritesContentTest {
         //测试选择所有，已成功
         //selectAllTest();
 
+        //测试修改备注，
+        updateTest();
 
-        
+        //测试删除，
+        //deleteTest();
 
     }
 
@@ -42,7 +45,7 @@ public class FavoritesContentTest {
         favoritesContent.setInsertDate("just now");
         favoritesContent.setRemark(null);
         Video video = new Video();
-        video.setId(6);
+        video.setId(1);
         favoritesContent.setVideo(video);
         favoritesContentDao.insertFavoritesContent(favoritesContent);
     }
@@ -55,18 +58,17 @@ public class FavoritesContentTest {
     }
     public static void selectAllByIdTest() {
         Favorites favorites = new Favorites();
-        favorites.setId(2);
+        favorites.setId(1);
         List<FavoritesContent> favoritesContents = favoritesContentDao.selectAllById(favorites);
         for (FavoritesContent favoritesContent : favoritesContents) {
             System.out.println(favoritesContent);
         }
     }
     public static void updateTest() {
-        Video video = new Video();
-        video.getId();
         FavoritesContent favoritesContent = new FavoritesContent();
-        if (video.getId()==1) {
-            favoritesContent.setRemark("11111111");
+        favoritesContent.getId();
+        if (favoritesContent.getId()==1) {
+            favoritesContent.setRemark("22222222");
         }
         favoritesContentDao.updateFavoritesContent(favoritesContent);
     }

@@ -101,11 +101,15 @@ public class UserController {
             String mpwd =MD5Util.MD5Encode(pwd);
             user.setPwd(mpwd);
             user.setRegistDate(CurrentDate.getCurrentDate());
-            if (userService.findByName(name)==null) {
-                userService.addUser(user);
-                return "regist/success";
-            } else {
-                map.put("msg", "该用户名已存在");
+            if (name!=null) {
+                if (userService.findByName(name) == null) {
+                    userService.addUser(user);
+                    return "regist/success";
+                } else {
+                    map.put("msg", "该用户名已存在");
+                }
+            }else {
+                map.put("msg","用户名不能为空");
             }
         }else {
             map.put("msg","两次密码不相同");
