@@ -93,7 +93,7 @@ public class FavoritesContentController {
     }
      @RequestMapping("/favoritescontent")
     public String showFavoritesContent(){
-        return "favoritescontent/find";
+        return "favoritescontent/page";
     }
 }
 
