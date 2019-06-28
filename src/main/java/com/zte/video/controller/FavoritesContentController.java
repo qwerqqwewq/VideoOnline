@@ -9,6 +9,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -50,6 +51,7 @@ public class FavoritesContentController {
     /**
      * 添加视频至收藏夹
      */
+    @ResponseBody
     public String insertAction(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
@@ -65,10 +67,11 @@ public class FavoritesContentController {
         return "insert/insert";
     }
 
+    @RequestMapping("/update.do")
     /**
      * 修改收藏夹中视频备注
      */
-    @RequestMapping("/update.do")
+    @ResponseBody
     public String updateAction(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
@@ -78,11 +81,12 @@ public class FavoritesContentController {
         return gson.toJson(map);
     }
 
+    @RequestMapping("/delete.do")
 
     /**
      * 删除选中的视频
      */
-    @RequestMapping("/delete.do")
+    @ResponseBody
     public String deleteAction(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
