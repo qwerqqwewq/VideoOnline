@@ -74,9 +74,10 @@ public class FavoritesContentTest {
     public static void deleteTest() {
         FavoritesContent favoritesContent = new FavoritesContent();
         Video video = new Video();
-        video.setId(3);
-        favoritesContent.setVideo(video);
-        favoritesContentDao.deleteFavoritesContent(favoritesContent);
+        video.getId();
+        if (video.getId()==1) {
+            favoritesContentDao.deleteFavoritesContent(favoritesContent);
+        }
     }
 
 }
