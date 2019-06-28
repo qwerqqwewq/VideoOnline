@@ -2,7 +2,9 @@ package com.zte.video.controller;
 
 import com.google.gson.Gson;
 import com.zte.video.entity.Favorites;
+import com.zte.video.entity.FavoritesContent;
 import com.zte.video.entity.User;
+import com.zte.video.service.FavoritesContentService;
 import com.zte.video.service.FavoritesService;
 import com.zte.video.service.UserService;
 import org.apache.commons.beanutils.BeanUtils;
@@ -27,6 +29,7 @@ public class FavoritesController {
     @Autowired
     FavoritesService favoritesService;
     UserService userService;
+    FavoritesContentService favoritesContentService;
 @RequestMapping("/findByUser")
     String findFavoritesPageByUser(Integer uid,Model model){
     User user=new User();
@@ -70,13 +73,33 @@ public class FavoritesController {
             map.put("msg","插入成功");
         return gson.toJson(map);
     }
-    @RequestMapping("/delete")
+    @RequestMapping("/delete.do")
     String deleteFavorites(Integer fid){
         Favorites favorites=new Favorites();
         favorites.setId(fid);
+        FavoritesContent favoritesContent=new FavoritesContent();
+        favoritesContent.setFavorites(favorites);
+        Gson gson=new Gson();
+        Map map=new HashMap<>();
+        if(favorites.getId()==null)
+        {
+            map.put("msg","删除失败");
+        }else{
+        favoritesContentService.removeFavoritesContent(favoritesContent);
         favoritesService.updateFavorites(favorites);
-        return "/favorites/delete";
 
+        map.put("msg","删除成功");}
+        return gson.toJson(map);
+
+    }
+    @RequestMapping("/update")
+    String updateFavorites(){
+        return "/favorites/update";
+    }
+
+    @RequestMapping("/delete")
+    String deleteFavorites(){
+        return "/favorites/delete";
     }
 
 
