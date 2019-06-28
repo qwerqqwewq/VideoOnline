@@ -62,10 +62,15 @@ public class FavoritesContentTest {
         }
     }
     public static void updateTest() {
+        Video video = new Video();
+        video.getId();
         FavoritesContent favoritesContent = new FavoritesContent();
-        favoritesContent.setRemark("11111111");
+        if (video.getId()==1) {
+            favoritesContent.setRemark("11111111");
+        }
         favoritesContentDao.updateFavoritesContent(favoritesContent);
     }
+
     public static void deleteTest() {
         FavoritesContent favoritesContent = new FavoritesContent();
         Video video = new Video();
