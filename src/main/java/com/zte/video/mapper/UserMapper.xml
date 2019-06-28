@@ -41,7 +41,7 @@
 
 
 
-
+<!--public int insertUser(User user);-->
     <insert id="insertUser" parameterType="user">
         INSERT INTO
         t_user
@@ -50,6 +50,8 @@
         (#{pwd},#{name},#{registDate},'2')
     </insert>
 
+
+    <!-- public User selectByID(Integer id);-->
     <select id="selectByID" resultMap="ruser">
         SELECT
         *
@@ -61,7 +63,7 @@
 
 
 
-
+<!--public int updateUser(User user);-->
     <update id="updateUser" parameterType="user">
         UPDATE
         t_user

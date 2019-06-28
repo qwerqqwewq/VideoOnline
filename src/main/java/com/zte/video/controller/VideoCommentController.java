@@ -8,6 +8,7 @@ import com.zte.video.service.VideoCommentService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -48,9 +49,21 @@ public class VideoCommentController {
         return gson.toJson(map);
     }
 
-    @RequestMapping("/update.do")
+    //删除评论
+    @RequestMapping("/{id}/remove.do")
     @ResponseBody
-    public String updateAction(HttpServletRequest req,@SessionAttribute("user") User user,Integer vid) throws InvocationTargetException, IllegalAccessException {
+    public String removeAction(@PathVariable("id") Integer id) {
+        //配置json信息
+        Gson gson = new Gson();
+        Map map = new HashMap<>(1);
+        map.put("result", videoCommentService.removeById(id));
+        //返回结果
+        return gson.toJson(map);
+    }
+
+    @RequestMapping("/{vid}/update.do")
+    @ResponseBody
+    public String updateAction(HttpServletRequest req,@SessionAttribute("user") User user,@PathVariable("vid") Integer vid) throws InvocationTargetException, IllegalAccessException {
         //配置基础内容
         VideoComment videoComment = new VideoComment();
         BeanUtils.populate(videoComment,req.getParameterMap());

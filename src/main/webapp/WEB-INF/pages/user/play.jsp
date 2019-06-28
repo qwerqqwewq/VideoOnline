@@ -34,8 +34,8 @@
         <div>用户名：${comment.user.name}</div>
         <div>评论时间${comment.commentDate}</div><br>
         <div>评论了：  ${comment.content}</div>
-        <c:if test="${comment.user.id}==${sessionScope.user.id}" >
-            <a href="${pageContext.request.contextPath}/videoComment/update.do?id=${comment.id}">删除</a>
+        <c:if test="${comment.user.id == sessionScope.user.id}" >
+            <a href="${pageContext.request.contextPath}/videoComment/${comment.id}/remove.do">删除</a>
         </c:if>
     </c:forEach>
 </li><br>

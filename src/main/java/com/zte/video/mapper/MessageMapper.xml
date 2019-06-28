@@ -18,8 +18,29 @@
         m.id,
         m.content,
         m.messageDate,
+        （
+        SELECT count(1)
+        FROM t_messageComment t
+        where t.mid=m.id
+        ）as messageComment
+        FROM t_message m
 
     </select>
+
+    <insert id="insertMessage" parameterType="message">
+        INSERT INTO
+        t_message
+        (content,messageDate,uid)
+        VALUES
+        (#{content},#{messageDate},#{uid})
+    </insert>
+
+    <delete id="deleteMessage" parameterType="message">
+        DELETE
+        FROM t_message
+        WHERE
+        id=#{id}
+    </delete>
 
 
 </mapper>
