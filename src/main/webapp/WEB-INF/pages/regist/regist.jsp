@@ -81,7 +81,7 @@
                                 <div class="col-sm-12">
                                     <div class="signin-footer">
                                         <a href="javascript:onClick=subbtn2()">确认</a>
-                                        <a href="${pageContext.request.contextPath}/user/login">返回</a>
+                                        <a href="${pageContext.request.contextPath}">返回</a>
                                     </div><!--/.signin-footer -->
                                 </div><!--/.col-->
                             </div>
