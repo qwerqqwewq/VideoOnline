@@ -43,4 +43,11 @@ public interface VideoService {
      * @return
      */
     public int addVideo(Video video);
+
+    /**
+     * 下架视频
+     * @param id 视频id
+     * @return
+     */
+    public int removeVideo(Integer id);
 }

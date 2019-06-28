@@ -20,7 +20,6 @@
 <body>
 <a href="${pageContext.request.contextPath}/video/insertVideo">插入视频</a><br>
 <a href="${pageContext.request.contextPath}/video/findVideo">查看所有视频</a><br>
-<a href="${pageContext.request.contextPath}/video/updateVideo">更新视频</a><br>
 <script type="text/javascript" src="js/TweenLite.min.js"></script>
 <script type="text/javascript" src="js/EasePack.min.js"></script>
 <script type="text/javascript" src="js/rAF.js"></script>

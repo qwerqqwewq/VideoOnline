@@ -59,4 +59,14 @@ public class VideoServiceImpl implements VideoService {
         video.setUploadDate(CurrentDate.getCurrentDate());
         return videoDao.insertVideo(video);
     }
+
+    @Override
+    public int removeVideo(Integer id) {
+        Video video = videoDao.selectById(id);
+        if (video == null) {
+            return 0;
+        }
+        video.setTitle("已失效");
+        return videoDao.updateVideo(video);
+    }
 }

@@ -18,6 +18,11 @@
         <div>上传时间  ${video.uploadDate}</div>
         <div>视频类型  ${video.type.type}</div><br>
         <div><a href="${pageContext.request.contextPath}/play/${video.id}">查看详情</a> </div>
+        <div>
+            <c:if test="${sessionScope.user.power.power==\"管理员\"}">
+                <br><a href="${pageContext.request.contextPath}/video/updateVideo/${video.id}">修改内容</a>
+            </c:if>
+        </div>
     </li><br>
 
 </c:forEach>

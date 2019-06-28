@@ -84,11 +84,17 @@ public class VideoController {
         return "ok";
     }
 
-    @RequestMapping("/update.do")
+    @RequestMapping("/update.do/{id}")
     @ResponseBody
-    public String updateVideo(HttpServletRequest req, Integer typeId) throws InvocationTargetException, IllegalAccessException {
+    public String updateVideo(HttpServletRequest req,
+                              Integer typeId,
+                              @PathVariable("id") Integer id)
+            throws InvocationTargetException, IllegalAccessException {
         Video video = new Video();
         BeanUtils.populate(video, req.getParameterMap());
+        //视频id
+        video.setId(id);
+        //类型
         Type type = new Type();
         type.setId(typeId);
         video.setType(type);
@@ -104,6 +110,15 @@ public class VideoController {
             map.put("result", -1);
             map.put("msg", "无对应记录");
         }
+        return gson.toJson(map);
+    }
+
+    @RequestMapping("/remove.do/{id}")
+    @ResponseBody
+    public String removeAction(@PathVariable("id") Integer id) {
+        Gson gson = new Gson();
+        Map map = new HashMap(1);
+        map.put("result", videoService.removeVideo(id));
         return gson.toJson(map);
     }
 
@@ -129,11 +144,13 @@ public class VideoController {
         return "video/find";
     }
 
-    @RequestMapping("/updateVideo")
-    String updateVideoPage(Model model) {
-        List<Video> videos = videoService.findAll();
-        model.addAttribute("videos",videos);
-
+    @RequestMapping("/updateVideo/{id}")
+    String updateVideoPage(Model model,
+                           @PathVariable("id") Integer id) {
+        Video video = videoService.findById(id);
+        model.addAttribute("video", video);
+        List<Type> types = typeService.findAll();
+        model.addAttribute("types", types);
         return "video/update";
     }
 }
