@@ -28,8 +28,12 @@ import java.util.*;
 public class FavoritesController {
     @Autowired
     FavoritesService favoritesService;
+    @Autowired
     UserService userService;
+    @Autowired
     FavoritesContentService favoritesContentService;
+
+
 @RequestMapping("/findByUser")
     String findFavoritesPageByUser(Integer uid,Model model){
     User user=new User();

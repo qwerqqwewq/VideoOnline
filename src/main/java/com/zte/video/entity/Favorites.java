@@ -22,6 +22,14 @@ public class Favorites implements Serializable {
     public Favorites() {
     }
 
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
     public Favorites(String createDate, Integer id, String name, String remark, User user) {
         this.createDate = createDate;
         this.id = id;
@@ -41,13 +49,7 @@ public class Favorites implements Serializable {
                 '}';
     }
 
-    public String getCreateDate() {
-        return createDate;
-    }
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
 
     public Integer getId() {
         return id;
