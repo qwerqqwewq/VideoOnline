@@ -56,7 +56,7 @@
         VALUES
         (#{video.id},#{favorites.id},#{insertDate},#{remark})
     </insert>
-    <update id="updateFavoritescontent" parameterType="FavoritesContent">
+    <update id="updateFavoritesContent" parameterType="FavoritesContent">
         UPDATE t_favorites_content
         SET
         remark=#{remark}

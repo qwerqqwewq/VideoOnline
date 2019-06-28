@@ -28,10 +28,10 @@ public class FavoritesContentTest {
         //测试选择所有，已成功
         //selectAllTest();
 
-        //测试修改备注，
-        updateTest();
+        //测试修改备注，已成功
+        //updateTest();
 
-        //测试删除，
+        //测试删除，已成功
         //deleteTest();
 
     }
@@ -66,7 +66,7 @@ public class FavoritesContentTest {
     }
     public static void updateTest() {
         FavoritesContent favoritesContent = new FavoritesContent();
-        favoritesContent.getId();
+        favoritesContent.setId(1);
         if (favoritesContent.getId()==1) {
             favoritesContent.setRemark("22222222");
         }
@@ -75,11 +75,11 @@ public class FavoritesContentTest {
 
     public static void deleteTest() {
         FavoritesContent favoritesContent = new FavoritesContent();
-        Video video = new Video();
-        video.getId();
-        if (video.getId()==1) {
+        favoritesContent.setId(1);
+        if (favoritesContent.getId()==1) {
             favoritesContentDao.deleteFavoritesContent(favoritesContent);
         }
+
     }
 
 }
