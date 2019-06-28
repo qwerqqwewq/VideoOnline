@@ -7,6 +7,7 @@ import com.zte.video.service.FavoritesContentService;
 import com.zte.video.service.FavoritesService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import java.util.Map;
  * Date:2019-06-26 10:38
  * Description:<描述>
  */
+@Controller
 @RequestMapping("/favoritescontent")
 public class FavoritesContentController {
 
@@ -57,6 +59,8 @@ public class FavoritesContentController {
         //返回结果
         return gson.toJson(map);
     }
+
+    @RequestMapping("/insertPage")
     String loginpage(){
         return "insert/insert";
     }
@@ -87,10 +91,9 @@ public class FavoritesContentController {
         map.put("result", favoritesContentService.removeFavoritesContent(favoritesContent));
         return gson.toJson(map);
     }
-
-    @RequestMapping("favoritescontent")
-    String showFavoritesContent(){
-        return "FavoritesContent/find";
+     @RequestMapping("/favoritescontent")
+    public String showFavoritesContent(){
+        return "favoritescontent/find";
     }
 }
 
