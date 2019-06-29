@@ -21,8 +21,11 @@ public class FavoritesTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-dao.xml");
         favoritesDao = (FavoritesDao) context.getBean("favoritesDao");
 
-
+        selectById();
+        selectAll();
         insert();
+        update();
+        delete();
 
     }
 
