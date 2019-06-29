@@ -52,50 +52,50 @@ public class FavoritesController {
         favorites.setUser(user);
         Gson gson = new Gson();
         Map map=new HashMap();
-        if(favoritesService.findById(user)==null){
-            map.put("result",favoritesService.addFavorites(favorites));
-            map.put("msg","插入成功");
-        }else
-        {
-            map.put("result",-1);
-            map.put("msg","插入失败");
-        }
+        map.put("result",favoritesService.addFavorites(favorites));
+
         return gson.toJson(map);
     }
 
     @RequestMapping("/update.do")
     @ResponseBody
-    String updateFavorites(HttpServletRequest req,Integer uid)throws InvocationTargetException, IllegalAccessException{
+    String updateFavorites(HttpServletRequest req)throws InvocationTargetException, IllegalAccessException{
         Favorites favorites=new Favorites();
         BeanUtils.populate(favorites, req.getParameterMap());
-        User user=new User();
-        user.setId(uid);
-        favorites.setUser(user);
         Gson gson = new Gson();
         Map map=new HashMap();
             map.put("result",favoritesService.modifyFavorites(favorites));
             map.put("msg","插入成功");
         return gson.toJson(map);
     }
+
+
     @RequestMapping("/delete.do")
-    String deleteFavorites(Integer fid){
+    @ResponseBody
+    String deleteFavorites(Integer id){
+
         Favorites favorites=new Favorites();
-        favorites.setId(fid);
-        FavoritesContent favoritesContent=new FavoritesContent();
-        favoritesContent.setFavorites(favorites);
+        favorites.setId(id);
+
         Gson gson=new Gson();
         Map map=new HashMap<>();
         if(favorites.getId()==null)
         {
             map.put("msg","删除失败");
-        }else{
-        favoritesContentService.removeFavoritesContent(favoritesContent);
-        favoritesService.updateFavorites(favorites);
+        }else {
+            List<FavoritesContent> favoritesContents = favoritesContentService.findAllById(favorites);
+            for (FavoritesContent favoritesContent : favoritesContents) {
+                favoritesContentService.removeFavoritesContent(favoritesContent);
+            }
+            favoritesService.removeFavorites(id);
 
-        map.put("msg","删除成功");}
+            map.put("msg", "删除成功");
+        }
         return gson.toJson(map);
 
     }
+
+
     @RequestMapping("/update")
     String updateFavorites(){
         return "/favorites/update";

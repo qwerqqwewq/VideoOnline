@@ -55,7 +55,7 @@ public class FavoritesTest {
     public static void delete(){
         Favorites favorites=new Favorites();
         favorites.setId(1);
-        favoritesDao.deleteFavorites(favorites);
+//        favoritesDao.deleteFavorites(favorites);
 
     }
     public static void update(){

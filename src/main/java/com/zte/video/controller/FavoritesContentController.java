@@ -3,6 +3,7 @@ package com.zte.video.controller;
 import com.google.gson.Gson;
 import com.zte.video.entity.Favorites;
 import com.zte.video.entity.FavoritesContent;
+import com.zte.video.entity.Video;
 import com.zte.video.service.FavoritesContentService;
 import com.zte.video.service.FavoritesService;
 import org.apache.commons.beanutils.BeanUtils;
@@ -52,9 +53,15 @@ public class FavoritesContentController {
      * 添加视频至收藏夹
      */
     @ResponseBody
-    public String insertAction(HttpServletRequest req)throws InvocationTargetException,IllegalAccessException{
+    public String insertAction(HttpServletRequest req,Integer fid,Integer vid)throws InvocationTargetException,IllegalAccessException{
         FavoritesContent favoritesContent = new FavoritesContent();
         BeanUtils.populate(favoritesContent, req.getParameterMap());
+        Favorites favorites = new Favorites();
+        favorites.setId(fid);
+        Video video = new Video();
+        video.setId(vid);
+        favoritesContent.setFavorites(favorites);
+        favoritesContent.setVideo(video);
         Map map=new HashMap<>(1);
         Gson gson =new Gson();
         map.put("result", favoritesContentService.addFavoritesContent(favoritesContent));
