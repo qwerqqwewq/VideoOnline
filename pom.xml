@@ -222,7 +222,13 @@
         <configuration>
           <path>/online</path>
           <port>80</port>
+          <uriEncoding>utf-8</uriEncoding>
+          <staticContextPath>/online/p</staticContextPath>
+          <staticContextDocbase>D:\Program Files (x86)\3DHGAME\videos</staticContextDocbase>
+
+
         </configuration>
+
       </plugin>
       <!--tomcat7插件  end-->
 
