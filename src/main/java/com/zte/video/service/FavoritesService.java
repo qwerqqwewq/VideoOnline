@@ -35,10 +35,11 @@ public interface FavoritesService {
          * @return
          */
         public int modifyFavorites(Favorites favorites);
+
         /**
          * 删除收藏夹
-         * @param favorites
+         * @param id
          * @return
          */
-        public int updateFavorites(Favorites favorites);
+        public int removeFavorites(Integer id);
 }

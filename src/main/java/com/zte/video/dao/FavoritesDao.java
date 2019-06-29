@@ -36,8 +36,8 @@ public interface FavoritesDao {
     public int updateFavorites(Favorites favorites);
     /**
      * 删除收藏夹
-     * @param favorites
+     * @param id
      * @return
      */
-    public int deleteFavorites(Favorites favorites);
+    public int deleteFavorites(Integer id);
 }

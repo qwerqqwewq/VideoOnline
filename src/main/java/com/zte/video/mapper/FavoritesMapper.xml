@@ -59,9 +59,7 @@
     <update id="updateFavorites" parameterType="favorites">
         UPDATE t_favorites
         SET
-        uid=#{user.id},
         name=#{name},
-        createDate=#{createDate},
         remark=#{remark}
         WHERE
         id=#{id}

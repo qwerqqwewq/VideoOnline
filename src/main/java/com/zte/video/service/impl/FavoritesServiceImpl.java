@@ -51,10 +51,10 @@ public class FavoritesServiceImpl implements FavoritesService {
         return favoritesDao.updateFavorites(favorites);
     }
 
+
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
-    public int updateFavorites(Favorites favorites) {
-        return favoritesDao.deleteFavorites(favorites);
+    public int removeFavorites(Integer id) {
+        return favoritesDao.deleteFavorites(id);
     }
 
 

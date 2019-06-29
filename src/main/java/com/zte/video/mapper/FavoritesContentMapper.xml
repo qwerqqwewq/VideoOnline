@@ -31,7 +31,7 @@
         from t_favorites_content b
         ORDER BY b.insertDate DESC
     </select>
-    <select id="selectByFavorites" parameterType="favorites" resultMap="RM">
+    <select id="selectAllById" parameterType="favorites" resultMap="RM">
                 SELECT
         b.id id,
         b.vid vid,
@@ -45,7 +45,7 @@
         where c.id = b.fid
         )as fname
 
-        from t_favorites_content b
+        from t_favorites_content b, t_favorites c
         where c.name=#{name}
         ORDER BY b.insertDate DESC
     </select>
