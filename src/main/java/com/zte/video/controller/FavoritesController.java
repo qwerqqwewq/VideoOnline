@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author:helloboy
@@ -35,20 +38,22 @@ public class FavoritesController {
 
 
 @RequestMapping("/findByUser")
-    String findFavoritesPageByUser(Integer uid,Model model){
-    User user=new User();
-    user = userService.findByID(uid);
+    String findFavoritesPageByUser(Model model,HttpServletRequest req){
+    HttpSession session=req.getSession();
+    User user=(User)session.getAttribute("user");
+    user = userService.findByID(user.getId());
     List<Favorites> favorites = favoritesService.findById(user);
     model.addAttribute("favorites",favorites);
     return "/favorites/find";
 }
     @RequestMapping("/insert.do")
     @ResponseBody
-    String insertFavorites(HttpServletRequest req,Integer uid)  throws InvocationTargetException, IllegalAccessException{
+    String insertFavorites(HttpServletRequest req)  throws InvocationTargetException, IllegalAccessException{
         Favorites favorites=new Favorites();
         User user=new User();
+        HttpSession session=req.getSession();
+        user=(User)session.getAttribute("user");
         BeanUtils.populate(favorites, req.getParameterMap());
-        user.setId(uid);
         favorites.setUser(user);
         Gson gson = new Gson();
         Map map=new HashMap();
@@ -61,7 +66,10 @@ public class FavoritesController {
     @ResponseBody
     String updateFavorites(HttpServletRequest req)throws InvocationTargetException, IllegalAccessException{
         Favorites favorites=new Favorites();
+        HttpSession session=req.getSession();
+        User user=(User)session.getAttribute("user");
         BeanUtils.populate(favorites, req.getParameterMap());
+        favorites.setUser(user);
         Gson gson = new Gson();
         Map map=new HashMap();
             map.put("result",favoritesService.modifyFavorites(favorites));
@@ -102,8 +110,17 @@ public class FavoritesController {
     }
 
     @RequestMapping("/delete")
-    String deleteFavorites(){
+    String deleteFavorites(Model model,HttpServletRequest req){
+            HttpSession session=req.getSession();
+            User user=(User)session.getAttribute("user");
+            user = userService.findByID(user.getId());
+            List<Favorites> favorites = favoritesService.findById(user);
+            model.addAttribute("favorites",favorites);
         return "/favorites/delete";
+    }
+    @RequestMapping("/insert")
+    String insertFavorites(){
+        return "/favorites/insert";
     }
 
 

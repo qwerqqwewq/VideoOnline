@@ -5,7 +5,7 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/favorites/delete.do" method="post">
-        <<input name="fid" />请输入收藏夹id<br>
+        <<input name="id" />请输入收藏夹id<br>
     </div>
 </form>
 </body>
