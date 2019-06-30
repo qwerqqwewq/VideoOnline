@@ -36,7 +36,7 @@ public class FavoritesController {
     @Autowired
     FavoritesContentService favoritesContentService;
 
-
+//通过用户查找
     @RequestMapping("/findByUser")
     String findFavoritesPageByUser(Model model,HttpServletRequest req){
     HttpSession session=req.getSession();
@@ -46,6 +46,7 @@ public class FavoritesController {
     model.addAttribute("favorites",favorites);
     return "/favorites/find";}
 
+//插入操作
     @RequestMapping("/insert.do")
     @ResponseBody
     String insertFavorites(HttpServletRequest req)  throws InvocationTargetException, IllegalAccessException{
@@ -62,6 +63,7 @@ public class FavoritesController {
         return gson.toJson(map);
     }
 
+//更新操作
     @RequestMapping("/update.do")
     @ResponseBody
     String updateFavorites(HttpServletRequest req)throws InvocationTargetException, IllegalAccessException{
@@ -77,7 +79,7 @@ public class FavoritesController {
         return gson.toJson(map);
     }
 
-
+//删除操作
     @RequestMapping("/delete.do")
     @ResponseBody
     String deleteFavorites(Integer id){
@@ -103,12 +105,13 @@ public class FavoritesController {
 
     }
 
-
+//更新页面
     @RequestMapping("/update")
     String updateFavorites(){
         return "/favorites/update";
     }
 
+//删除页面
     @RequestMapping("/delete")
     String deleteFavorites(Model model,HttpServletRequest req){
             HttpSession session=req.getSession();
@@ -119,15 +122,14 @@ public class FavoritesController {
         return "/favorites/delete";
     }
 
+//插入页面
     @RequestMapping("/insert")
     String insertFavorites(){
         return "/favorites/insert";
     }
-
+//主页面
     @RequestMapping("/page")
     String page(){
         return"/favorites/page";
     }
-
-
 }
