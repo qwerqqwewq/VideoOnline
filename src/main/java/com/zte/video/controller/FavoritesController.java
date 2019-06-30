@@ -37,15 +37,15 @@ public class FavoritesController {
     FavoritesContentService favoritesContentService;
 
 
-@RequestMapping("/findByUser")
+    @RequestMapping("/findByUser")
     String findFavoritesPageByUser(Model model,HttpServletRequest req){
     HttpSession session=req.getSession();
     User user=(User)session.getAttribute("user");
     user = userService.findByID(user.getId());
     List<Favorites> favorites = favoritesService.findById(user);
     model.addAttribute("favorites",favorites);
-    return "/favorites/find";
-}
+    return "/favorites/find";}
+
     @RequestMapping("/insert.do")
     @ResponseBody
     String insertFavorites(HttpServletRequest req)  throws InvocationTargetException, IllegalAccessException{
@@ -118,9 +118,15 @@ public class FavoritesController {
             model.addAttribute("favorites",favorites);
         return "/favorites/delete";
     }
+
     @RequestMapping("/insert")
     String insertFavorites(){
         return "/favorites/insert";
+    }
+
+    @RequestMapping("/page")
+    String page(){
+        return"/favorites/page";
     }
 
 
